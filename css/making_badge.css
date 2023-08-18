@@ -8,7 +8,7 @@ main {
 header {
   top: 0;
   width: 100%;
-  min-height: 5.81rem;
+  min-height: 4rem;
 }
 
 .making_badge_main_header {
@@ -47,8 +47,8 @@ header {
 
 .making_badge_attach_image_label {
   margin-top: 3.81rem;
-  width: 22.75rem;
-  height: 23.375rem;
+  width: 20rem;
+  height: 20rem;
   flex-shrink: 0;
   background: #d9d9d9;
   display: flex;
@@ -59,10 +59,9 @@ header {
 
 .making_badge_attach_document {
   min-width: 80%;
-  height: 13rem;
+  min-height: 10rem;
   border: none;
   border-top: 1px solid rgba(0, 0, 0, 0.6);
-
   resize: none;
   color: #000;
   font-family: Inter;
@@ -71,4 +70,5 @@ header {
   font-weight: 600;
   line-height: normal;
   padding: 0px 2rem;
+  outline: none;
 }

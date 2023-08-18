@@ -5,114 +5,142 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="../css/new_feed2.css">
-  <title>Logged.me</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/new_feed2.css">
+    <title>Logged.me</title>
 </head>
 
 <body>
-    <div class="page__wrap">
-        <div class="page__img">
-            <div class="page__inner">
-                <div class="new_feed1">
-                    <div class="head">
-                        <a href="#" onclick="goBack()">
-                            <img src="../image/new_feed1_closeBtn.png" id="closeBtn">
-                        </a>
-                        <div class="New_post">
-                            New post
-                        </div>
-                        <!-- 밑에 createDiv()함수(js에서 따로 만듬)을 통해서 다음 페이지에 있을 이미지 개수에 따라div요소를 생성시킨다.-->
-                        <p class="Next" id="Next" role="button" onclick="createDiv()">Next</p>
-                    </div>
-                    
-                    <main class="main_body">
-                        <div id="preview_image" >
-                    
-                        </div>
-                        <div class="photo_add">
-                            <div class="container">
-                                <p class="preview_title">photo</p>
-                                <div class="preview" id="preview">
-                                    <label class="label" id="label" for="input">
-                                        <div class="inner" id="inner"><img src="../image/new_feed1_AddBtn.png" id="add_btn"> </div>
-                                    </label>
-                                </div>
-                                <!-- accept: 파일 유형, type: 파일, required: form양식에서 꼭 필요한 값, multiple: 여러개의 파일 업로드 가능(true), hidden: 위의 label을 사용하기 위해서 input을 겉으로 보이지 않게 함.-->
-                                <input id="input" class="input" accept="image/*" type="file" required="true" multiple="true" hidden="true">
+    <form id="new-post-form">
+        <div class="page__wrap">
+            <div class="page__img">
+                <div class="page__inner">
+
+                    <div class="new_feed1">
+                        <div class="head">
+                            <a href="#" onclick="goBack()">
+                                <img src="../image/new_feed1_closeBtn.png" id="closeBtn">
+                            </a>
+                            <div class="New_post">
+                                New post
                             </div>
+                            <p class="Next" id="Next" role="button">Next</p>
                         </div>
-                    </main>
-                </div>
-                <div class="new_feed2">
-                    <div class="head">
-                        <img src="../image/new_feed2_backBtn.png" id="backBtn">
-                        <div class="New_post">
-                            New post
-                        </div>
-                        <a href="#" id="Share">Share</a>
-                    </div>
-                    <main>
-                        <!-- 게시물 사진 부분 (슬라이드)-->
-                        <div class="slider__wrap">
-                            <div class="slider__img">
-                                <div class="slider__inner Next">
-                                    <div class="slider slide1" role="group"><img src="../image/bottom_nav_enterprise.png"></div>
-                                    
+
+                        <main class="main_body">
+                            <div id="new_post_image">
+                                <div id="preview_image">
+
                                 </div>
                             </div>
-                            <div class="slider__btn">
-                                <img src="../image/new_feed2_leftarrow.png" class="prev" role="button">
-                                <img src="../image/new_feed2_rightarrow.png" class="next" role="button">
+                            <div class="photo_add">
+                                <div class="container">
+                                    <p class="preview_title">photo</p>
+                                    <div class="preview" id="preview">
+                                        <label class="label" id="label" for="input">
+                                            <div class="inner" id="inner"><img src="../image/new_feed1_AddBtn.png"
+                                                    id="add_btn"> </div>
+                                        </label>
+                                    </div>
+                                    <!-- accept: 파일 유형, type: 파일, required: form양식에서 꼭 필요한 값, multiple: 여러개의 파일 업로드 가능(true), hidden: 위의 label을 사용하기 위해서 input을 겉으로 보이지 않게 함.-->
+                                    <input name="images" id="input" class="input" accept="image/*" type="file"
+                                        required="true" multiple="true" hidden="true">
+                                </div>
                             </div>
-                            <div class="slider__dot">
-                                
+                        </main>
+                    </div>
+                    <div class="new_feed2">
+                        <div class="head">
+                            <img src="../image/new_feed2_backBtn.png" id="backBtn">
+                            <div class="New_post">
+                                New post
                             </div>
+                            <div id="Share">Share</div>
                         </div>
-                        
-                        <!-- 게시물 내용(프로필, 내용, 기업태그) 부분 -->
-                        <div id="feed_content">
-                            <div id="profile_image">
+                        <main>
+                            <!-- 게시물 사진 부분 (슬라이드)-->
+                            <div class="slider__wrap">
+                                <div class="slider__img">
+                                    <div class="slider__inner Next">
+                                        <!--<div class="slider" role="group"><img class="sliderImg" src="../image/bottom_nav_person.png"></div>-->
+                                    </div>
+                                </div>
+                                <div class="slider__btn">
+                                    <img src="../image/new_feed2_leftarrow.png" class="prev" role="button">
+                                    <img src="../image/new_feed2_rightarrow.png" class="next" role="button">
+                                </div>
+                                <div class="slider__dot">
 
+                                </div>
                             </div>
-                            <div id="text">
 
+                            <!-- 게시물 내용(프로필, 내용, 기업태그) 부분 -->
+                            <div id="feed_content">
+                                <div id="profile_image">
+                                    <img id="profile" src="../image/new_feed1_rectangle.png">
+                                </div>
+                                <input id="text" type="text" onchange="giveText()" name="content" maxlength="120"
+                                    placeholder="Write a caption...">
+                                <!-- 
+                                    input으로 text를 입력하는 것에 있어서 개행과 줄바꿈, 입력의 시작점 상단 설정이 불가능 하다.
+                                    가능한 방법은 textarea 또는 pre 태그 같은 놈들 이용
+                                    그러고 위에 id="text"의 input태그의 value값에 textarea의 value 값을 넣어주고
+                                    input type=text인 태그를 백에 전송해 주는 방법 밖에 없다.
+                                -->
                             </div>
-                        </div>
 
-                        <!-- 기업 태그 부분(모달창 띄우기 버튼)-->
-                        <div id="tag_company">
-
-                        </div>
-                    </main>
+                            <!-- 기업 태그 부분(모달창 띄우기 버튼)-->
+                            <button id="open_modal">
+                                <p class="Tag_text">Tag company</p>
+                                <img class="arrow" src="../image/tagCompanyArrow.png">
+                            </button>
+                            <div class="modal_overlay">
+                                <div class="modal_content">
+                                    <div class="modal_header">
+                                        <img class="close_btn" src="../image/Cancel.png">
+                                        <p class="Done" role="button">Done</p>
+                                    </div>
+                                    <div class="modal_container">
+                                        <p class="tagCompany_text">태그할 기업을 검색해주세요.</p>
+                                        <!-- 디바운스 파트! -->
+                                        <div class="search_box">
+                                            <img class="search_img" src="../image/search.png">
+                                            <input class="box" type="text" placeholder="search">
+                                        </div>
+                                        <div class="company_list">
+                                            <!-- 기업 목록들! -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-  <!--base-->
-  <section class="base_bottom_nav">
-    <a href="./enterprise_feed.html" class="base_bottom_nav_item"><img src="../image/bottom_nav_enterprise.png"
-        alt="enterprise" id="bottom_nav_enterprise_image" class="base_bottom_nav_item_image"></a>
-    <a href="./personal_feed.html" class="base_bottom_nav_item"><img src="../image/bottom_nav_person.png" alt="person"
-        id="bottom_nav_person_image" class="base_bottom_nav_item_image"></a>
-    <a href="#" class="base_bottom_nav_item"><img src="../image/bottom_nav_search.png" alt="search"
-        id="bottom_nav_search_image" class="base_bottom_nav_item_image"></a>
-    <a href="#" class="base_bottom_nav_item"><img src="../image/bottom_nav_plus.png" alt="addPost"
-        class="base_bottom_nav_plus_image">
-    </a>
-    <a href="#" class="base_bottom_nav_item"><img src="../image/bottom_nav_profile.png" alt="profile"
-        id="bottom_nav_profile_image" class="base_bottom_nav_item_image"></a>
-  </section>
-  <!--base-->
+    </form>
+        <!-- 여기서부터 -->
+    
+    <section class="base_bottom_nav">
+        <a href="./corporation_feed.html" class="base_bottom_nav_item"><img src="../image/bottom_nav_enterprise.png"
+            alt="enterprise" id="bottom_nav_enterprise_image" class="base_bottom_nav_item_image"></a>
+        <a href="./personal_feed.html" class="base_bottom_nav_item"><img src="../image/bottom_nav_person.png" alt="person"
+            id="bottom_nav_person_image" class="base_bottom_nav_item_image"></a>
+        <a href="./search_main.html" class="base_bottom_nav_item"><img src="../image/bottom_nav_search.png" alt="search"
+            id="bottom_nav_search_image" class="base_bottom_nav_item_image"></a>
+        <a href="./new_feed2.html" class="base_bottom_nav_item"><img src="../image/bottom_nav_plus.png" alt="addPost"
+            class="base_bottom_nav_plus_image">
+        </a>
+        <div class="base_bottom_nav_item"><img src="../image/bottom_nav_profile.png" alt="profile"
+            id="bottom_nav_profile_image" class="base_bottom_nav_item_image"></div>
+    </section>
 </body>
-
-<!--base-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="../js/base.js"></script>
-<!--base-->
+
+<!-- 여기까지 복붙 하면 됩니다ㅏ(본인 js 연결코드 지우지 않게 조심...)-->
 <script src="../js/new_feed2.js"></script>
 
 </html>

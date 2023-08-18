@@ -28,19 +28,21 @@ body {
 }
 
 .head {
-    padding-top: 5.75rem;
+    padding-top: 3rem;
     margin-bottom: 1.5rem;
     margin-left: 0.88rem;
     margin-right: 0.88rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    
+    align-items: center;   
 }
 
-#Share {
+#Share{
     text-decoration-line: none;
 }
+
+
 /* 이미지 가운데로 오게 함 */
 /* preview 이미지 구간 
 #preview_image {
@@ -54,14 +56,14 @@ body {
 /********************* 시작부분!test new_feed1 슬라이더 ********************/
 .new_feed1 {
     position: relative;
-    width: 430px;
-    height: 863.33px;
+    width: 360px;
+    height: 710px;
 }
 
 .new_feed2 {
     position: relative;
-    width: 430px;
-    height: 863.33px;
+    width: 360px;
+    height: 710px
 }
 
 #Next {
@@ -69,11 +71,18 @@ body {
 }
 
 /* preview 이미지 구간 */
+#new_post_image {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 100%;
+}
+
 #preview_image {
-    display: block;
-    margin: auto;
-    width: 22.75rem;
-    height: 23.375rem;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 360px;
 }
 
 /* 추가한 이미지 구간 */
@@ -83,8 +92,6 @@ body {
 }
 
 .photo_add {
-    width: 22.75rem;
-    height: 20rem;
 }
 
 .preview_title {
@@ -107,16 +114,17 @@ body {
 
 /* 추가된 이미지의 크기 결정 */
 .embed-img {
-    width: 5.5rem;
-    height: 5.4375rem;
+    width: 3rem;
+    height: 3rem;
     object-position: center;
     object-fit: cover;
 }
 
 /* 상단 preview 이미지 */
 .preview_image {
-    width: 22.75rem;
-    height: 23.375rem;
+    margin-left: 15px;
+    width: 330px;
+    height: 350px;
 }
 /********************* 끝 부분!test new_feed1 슬라이더 ********************/
 
@@ -139,15 +147,15 @@ body {
 /* 이미지 보이는 부분 */
 .slider__img {
     position: relative;
-    width: 364px;
-    height: 374px;
+    width: 330px;
+    height: 330px;
     overflow: hidden;
 }
 
 .page__img {
     position: relative;
-    width: 430px;
-    height: 863.33px;
+    width: 360px;
+    height: 710px;
     overflow: hidden; 
 }
 
@@ -155,23 +163,23 @@ body {
 .page__inner {
     display: flex;
     flex-wrap: wrap;
-    width: 860px;
-    height: 863.33px;
+    width: 720px;
+    height: 710px;
 }
 
 /* 이미지 감싸고 있는 부모 : 움직이는 부분 */
 .slider__inner {
     display: flex;
     flex-wrap: wrap;
-    /* 총 이미지 6개 */
-    width: 2184px;
-    height: 374px;
+    /* 총 이미지 10개 */
+    width: 3300px;
+    height: 330px;
 }
 /* 개별적인 이미지 */
 .slider {
     position: relative;
-    width: 364px;
-    height: 374px;
+    width: 330px;
+    height: 330px;
 }
 .slider img{
     width: 100%;
@@ -200,15 +208,17 @@ body {
 }
 .slider__btn img.prev {
     left: 33px;
+    opacity: 0.3;
 }
 .slider__btn img.next {
     right: 33px;
+    opacity: 0.3;
 }
 
 /* 점 부분 */
 .slider__dot {
     position: absolute;
-    padding-top: 380px;
+    padding-top: 396px;
 }
 .slider__dot .dot {
     width: 10px;
@@ -223,3 +233,205 @@ body {
 .slider__dot .dot.active {
     background: black;
 }
+
+/* 피드 콘텐츠(프로필 이미지, 내용, 기업태그 등) */
+#feed_content {
+    display: flex;
+    justify-content: center;
+    margin-top: 41px;
+}
+
+.profile_image {
+    width: 48px;
+    height: 46px;
+}
+
+#profile {
+    margin-left: 15px;
+    width: 48px;
+    height: 46px;
+    border-radius: 70%;
+}
+
+#text {
+    width: 316px;
+    padding-left: 8px;
+    border: none;
+}
+
+/* 
+    모달창 부분!! tag company
+*/
+
+#open_modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.84rem;
+    width: 360px;
+    height: 4.31rem;
+    padding-top: 1.37rem;
+    padding-bottom: 1.81rem;
+    border-left: none;
+    border-right: none;
+    border-top-width: 0.0125rem;
+    border-bottom-width: 0.0125rem;
+    border-color: rgba(0, 0, 0, 0.60);;
+    background: #fff;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.Tag_text {
+    margin-left: 2.25rem;
+    opacity: 0.9;
+    display: flex;
+    flex-direction: row;
+    color: #000;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.tagged_company {
+    margin-left: 0.63rem;
+    font-weight: 400;
+}
+
+.arrow {
+    margin-right: 1.25rem;
+}
+
+.modal_overlay {
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 150%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.32);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal_content {
+    width: 280px;
+    min-height: 600px;
+    height: fit-content;
+    flex-shrink: 0;
+    padding: 1rem;
+    margin: 0;
+    border: 1px solid #777;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal_header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.69rem;
+    margin-left: 1.56rem;
+    margin-right: 0.23rem;
+  }
+
+  .close_btn {
+    width: 1.875rem;
+    height: 1.875rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+  }
+
+  .Done {
+    width: 3.25rem;
+    height: 1.375rem;
+  }
+
+  .modal_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+
+  .tagCompany_text {
+    color: #000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    opacity: 0.9;
+    margin: 0;
+  }
+
+ .search_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2.38rem;
+    width: 13.125rem;
+    height: 2.375rem;
+    border-radius: 0.3125rem;
+    background: rgba(217, 217, 217, 0.50);
+ }
+
+ .search_img {
+    width: 1.1875rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    margin-right: 1.69rem;
+    margin-left: 0.38rem;
+ }
+
+ .box {
+    color: #000;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width:65%;
+    background: rgba(217, 217, 217, 0);
+    border: none;
+ }
+
+ /* 모달창 기업 목록 부분 */
+ .company_list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
+ .company_item {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+ }
+
+ .company {
+    display: flex;
+    flex-direction: row;
+ }
+
+ .company_name {
+    margin-left: 0.63rem;
+ }
+
+ .company_image {
+    width: 50px;
+    height: 50px;
+    border-radius: 70%;
+ }

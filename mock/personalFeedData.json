@@ -1,0 +1,65 @@
+[
+    {
+      "feedId": 1,
+      "profileImgSrc": "https://i.postimg.cc/25NBDZ8n/Ellipse-1.png",
+      "userId": "ssgsag_app",
+      "feedImgList" : [
+        {
+          "imgId": 1,
+          "feedImg": "../image/feedEx.png"
+        },
+        {
+          "imgId": 2,
+          "feedImg": "../image/feed_img/IMG_5182.png"
+        },
+        {
+          "imgId": 3,
+          "feedImg": "../image/feed_img/IMG_5179.png"
+        }
+      ],
+      "likesNum": "139",
+      "taggedCompany": "Ssgsag",
+      "hashtag": "#커리어_성장프로젝트",
+      "script": "[7월 4주차 HOT! 인턴 채용 공고]\n슥삭에서 고른 진또배기 인턴 공고는?",
+      
+      "uploadDate": "2023-07-30 12:55:00"
+    },
+    {
+      "feedId": 2,
+      "profileImgSrc": "https://i.postimg.cc/x8h5K3Lc/Ellipse-14.png",
+      "userId": "converse",
+      "feedImgList" : [
+        {
+            "imgId": 1,
+            "feedImg": "../image/feed_img/IMG_5179.png"
+        },
+        {
+          "imgId": 2,
+          "feedImg": "../image/feed_img/IMG_5182.png"
+        }
+      ],
+      "likesNum": "520",
+      "taggedCompany": "converse",
+      "hashtag": "#콘텐츠_기획",
+      "script": "[모집 공고]\n컨버스의 새로운 가족을 찾습니다. 컨버스의 특징을 가득 담은 콘텐츠를 기획 및 운영하실 분! 지금 당장 지원하세요!",
+      
+      "uploadDate": "2023-07-30 19:55:00"
+    },
+    {
+      "feedId": 3,
+      "profileImgSrc": "https://i.postimg.cc/fR45y5wP/Ellipse-16.png",
+      "userId": "microSoft",
+      "feedImgList" : [
+        {
+            "imgId": 1,
+            "feedImg": "../image/feed_img/IMG_5182.png"
+        }
+      ],
+      "likesNum": "945",
+      "taggedCompany": "microsoft",
+      "hashtag": "#빅워커_모집",
+      "script": "[빅워커를 모집합니다]\n마이크로소프트의 새로운 변화에 참여하실 Big워커는 홈페이지를 참조해주세요!",
+      
+      "uploadDate": "2023-07-29 19:55:00"
+    }
+]

@@ -1,0 +1,525 @@
+/* 하단바 css */
+.base_bottom_nav {
+    background-color: white;
+}
+
+/* 로고 css */
+header {
+    position: fixed;
+    width: 100%;
+    height: fit-content;
+    top: 0;
+    z-index: 2;
+    background-color: white;
+}
+
+header img {
+    width: 90px; 
+    height: 20px;
+    margin: 2rem 4rem 0 2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited,
+a:link,
+a:active {
+    color: black;
+}
+
+/* feed 최상단 옵션 css */
+.feed_header {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    top: 55px;
+    z-index: 2;
+}
+
+.feed_header_bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+}
+
+
+/* feed item css */
+.feed_list {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 2rem;
+    padding-top: 130px;
+    padding-bottom: 40px;
+    gap: 1rem;
+}
+
+.feed_item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+
+/* feed 상단 container flex */
+.feed_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    order: 1;
+    font-weight: bold;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.profile_info {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile_info img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.user_id {
+    padding-top: 0.3rem; 
+    font-size: large;   
+    cursor: pointer;
+}
+
+/* 옵션 토글버튼 */
+.optionBtn {
+    background-color: transparent;
+    border: none;
+}
+
+.optionBtn:active {
+    opacity: 0.5;
+}
+
+.optionBtn img{
+    width: 2rem;
+    height: 1rem;
+    padding-top: 1rem;
+}
+
+.option_content {
+    background-color: white;
+    border: solid 1px #ccc;
+    width: 50%;
+    height: 7rem;
+    border-radius: 15px;
+    margin: 0 0 2% 33%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    z-index: 2;
+}
+
+.option_content a {
+    color: #6970F2;
+    font-size: medium;
+    font-weight: bolder;
+}
+
+.option_content button {
+    background-color: transparent;
+    border: none;
+    color: #6970F2;
+    font-size: medium;
+    font-weight: bolder;
+}
+
+.option_content button:active{
+    opacity: 0.5;
+}
+
+/* feed 이미지 css */
+.image_container {
+    order: 2;
+    width: 100%;
+    height: 19rem;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.image_album {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.feed_image{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+
+.btn_container {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+}
+
+.previous,
+.next {
+    background-color: transparent;
+    border: none;
+    font-size: 60px;
+    color: black;
+    cursor: pointer;
+    padding: 0;
+}
+
+.previous img,
+.next img {
+    width: 60%;
+}
+
+/* 슬라이드 현재 위치 표시 점 */
+.slide_dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+    height: 4%;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dot {
+    width: 4%;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.active_dot {
+    background-color: #333;
+}
+
+/* 기능 목록 flex */
+.feedFunction_container {
+    display: flex;
+    flex-direction: column;
+    order: 3;
+    margin: 0.5rem 1rem;
+}
+
+.functionIcon_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.functionIcon_container button {
+    background: transparent;
+    border: none;
+    padding: 1px;
+}
+
+.functionIcon_container button:active {
+    opacity: 0.5;
+}
+
+.functionIcon_item {
+    display: flex;
+}
+
+.comment_link {
+    width: 16%;
+}
+
+.comment_link img{
+    width: 100%;
+}
+
+
+
+/* feed 하단부분 flex css */
+.feed_info {
+    display: flex;
+    flex-direction: column;
+    order: 4;
+    margin: 0 1rem;
+}
+
+.IdHashtag {
+    display: flex;
+    margin-bottom: 0.3rem;
+    order: 1;
+    font-size: medium;
+}
+
+.bottom_id {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.feed_hashtag {
+    margin-left: 0.5rem;
+    cursor: pointer;    
+    color: #3E93E1;
+}
+
+.feed_hashtag:visited,
+.feed_hashtag:link,
+.feed_hashtag:active {
+    color: #3E93E1;
+}
+
+.feed_script {
+    order: 2;
+    font-size: medium;
+    margin-bottom: 0.4rem;
+    width: 100%;
+    word-break: break-all;
+}
+
+/* 댓글 css */
+.comment_container {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    margin: 0.3rem 0;
+    font-size:medium;
+}
+
+.commentNum_container {
+    width: max-content;
+    cursor: pointer;
+    color: #797979;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.comment_list {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment_item {
+    display: flex;
+    flex-direction: row;
+    margin: 0.2rem 0;
+}
+
+/* 업로드 날짜(시간) */
+.uploaded_date {
+    order: 4;
+    color: #797979;
+    font-size: small;
+}
+
+/* 댓글목록 모달창 */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
+  
+  .modal_content {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+    margin: 10% auto 0 auto;
+    padding: 0px 20px 20px 20px;
+    border: 1px solid #888;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    width: 80%;
+    max-width: 600px;
+    height: 70%;
+    overflow-y: auto;
+}
+
+.modal_header_container {
+    width: 72%;
+    height: fit-content;
+    background-color: white;
+    position: fixed;
+    
+}
+
+  
+  .modal_header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px #888;
+  }
+  
+  .close_modal {
+    cursor: pointer;
+    width: 50px;
+    font-size: 40px;
+    padding-top: 2%;
+  }
+  
+  .modal_body {
+    width: 100%;
+    margin-top: 20px;
+    padding: 21.5% 0;
+  }
+  
+.comments_item {
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+}
+
+.comments_item a>img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.comments_user_info {
+    display: flex;
+}
+
+.comments_info {
+    display: flex;
+    flex-direction: column;
+}
+
+.comments_idDate {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.feeds_item {
+    display: flex;
+    flex-direction: row;
+}
+
+.feedAuthor_img img{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.feedContent_info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 댓글 작성 css */
+.postComment {
+    width: 80%;
+    max-width: 600px;
+    height: 8%;
+    bottom: 0;
+    left: 20;
+    position: fixed;
+    display: flex;
+    background-color: white;
+    align-items: center;
+}
+
+.postingUser_img {
+    left: 0;
+    width: fit-content;
+}
+
+.postingUser_img img {
+    margin: 0 0.7rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    
+}
+
+.commentInput input {
+    width: 75%;
+    max-width: 100%;
+    border: 1px solid #e3e3e3;
+    border-radius: 0.75rem;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #e3e3e3;
+    outline: none;
+}
+
+.comment_post button {
+    width: 50px;
+    height: 35px;
+    border: none;
+    background-color: transparent;
+    color: #6970F2;
+    font-size:small;
+    font-weight: bold;
+}
+
+/* 댓글 삭제 버튼  css*/
+/* 삭제버튼 보일지말지 여부 csss */
+.visible {
+    display: block;
+}
+.hidden {
+    display: none;
+}
+
+.deleteCommentBtn button{
+    width: 50px;
+    height: 35px;
+    border: none;
+    background-color: transparent;
+    color: #6970F2;
+    font-size:small;
+    font-weight: bold;
+    padding-top: 10%;
+}
+
+/* 댓글이 없을 경우 메시지 */
+#empty1 {
+    font-size: large;
+    font-weight: bold;
+    margin-left: 3.5rem;
+    margin-top: 1.5rem;
+}
+
+#empty2 {
+    font-size: small;
+    color: #888;
+    margin-left: 5rem;
+    margin-top: 0.5rem;
+}
+
+
+img:not([src]) {
+    content: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232");
+  }
+
+img[src=""] {
+content: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232");
+}

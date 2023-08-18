@@ -1,0 +1,27 @@
+[
+    {
+      "feedId": 1,
+      "profileImgSrc": "https://i.postimg.cc/25NBDZ8n/Ellipse-1.png",
+      "userId": "ssgsag_app",
+      "feedImgList" : [
+        {
+          "imgId": 1,
+          "feedImg": "../image/feedEx.png"
+        },
+        {
+          "imgId": 2,
+          "feedImg": "../image/feed_img/IMG_5182.png"
+        },
+        {
+          "imgId": 3,
+          "feedImg": "../image/feed_img/IMG_5179.png"
+        }
+      ],
+      "likesNum": "139",
+      "taggedCompany": "Ssgsag",
+      "hashtag": "#커리어_성장프로젝트",
+      "script": "[7월 4주차 HOT! 인턴 채용 공고]\n슥삭에서 고른 진또배기 인턴 공고는?",
+      
+      "uploadDate": "2023-07-30 12:55:00"
+    }
+]

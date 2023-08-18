@@ -19,6 +19,15 @@ header img {
     margin: 2rem 4rem 0 2rem;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:visited,
+a:link,
+a:active {
+    color: black;
+}
 
 /* feed 최상단 옵션 css */
 .feed_header {
@@ -71,6 +80,7 @@ header img {
 
 .profile_info img {
     width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
     margin-right: 1rem;
     cursor: pointer;
@@ -107,6 +117,12 @@ header img {
     z-index: 2;
 }
 
+.option_content a {
+    color: #6970F2;
+    font-size: medium;
+    font-weight: bolder;
+}
+
 .option_content button {
     background-color: transparent;
     border: none;
@@ -123,7 +139,7 @@ header img {
 .image_container {
     order: 2;
     width: 100%;
-    height: 23rem;
+    height: 19rem;
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -241,7 +257,7 @@ header img {
     display: flex;
     margin-bottom: 0.3rem;
     order: 1;
-    font-size: large;
+    font-size: medium;
 }
 
 .bottom_id {
@@ -252,11 +268,18 @@ header img {
 .feed_hashtag {
     margin-left: 0.5rem;
     cursor: pointer;    
+    color: #3E93E1;
+}
+
+.feed_hashtag:visited,
+.feed_hashtag:link,
+.feed_hashtag:active {
+    color: #3E93E1;
 }
 
 .feed_script {
     order: 2;
-    font-size: large;
+    font-size: medium;
     margin-bottom: 0.4rem;
 }
 
@@ -306,7 +329,7 @@ header img {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
+    z-index: 2;
   }
   
   .modal_content {
@@ -314,21 +337,36 @@ header img {
     bottom: 0;
     left: 0;
     right: 0;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #fefefe;
     margin: 10% auto 0 auto;
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
     border: 1px solid #888;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     width: 80%;
     max-width: 600px;
     height: 70%;
+    overflow-y: auto;
 }
+
+.modal_header_container {
+    width: 72%;
+    height: 11%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    
+}
+
   
   .modal_header {
     display: flex;
     justify-content: space-between;
+    border-bottom: solid 1px #888;
   }
   
   .close_modal {
@@ -339,5 +377,106 @@ header img {
   
   .modal_body {
     margin-top: 20px;
+    padding: 28% 0;
   }
   
+.comments_item {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.comments_item a>img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.comments_info {
+    display: flex;
+    flex-direction: column;
+}
+
+.comments_idDate {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.feeds_item {
+    display: flex;
+    flex-direction: row;
+}
+
+.feedAuthor_img img{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.feedContent_info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 댓글 작성 css */
+.postComment {
+    width: 80%;
+    max-width: 600px;
+    height: 8%;
+    bottom: 0;
+    left: 20;
+    position: fixed;
+    display: flex;
+    background-color: white;
+    align-items: center;
+}
+
+.postingUser_img {
+    left: 0;
+    width: fit-content;
+}
+
+.postingUser_img img {
+    margin: 0 0.7rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    
+}
+
+.commentInput input {
+    width: 75%;
+    max-width: 100%;
+    border: 1px solid #e3e3e3;
+    border-radius: 0.75rem;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #e3e3e3;
+    outline: none;
+}
+
+.comment_post button {
+    width: 50px;
+    height: 35px;
+    border: none;
+    background-color: transparent;
+    color: #6970F2;
+    font-size:small;
+    font-weight: bold;
+}
+
+#empty1 {
+    font-size: large;
+    font-weight: bold;
+    margin-left: 3.5rem;
+    margin-top: 1.5rem;
+}
+
+#empty2 {
+    font-size: small;
+    color: #888;
+    margin-left: 5rem;
+    margin-top: 0.5rem;
+}

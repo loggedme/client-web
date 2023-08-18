@@ -1,13 +1,38 @@
-// static variable
-var email_request = false; //인증보냈는지 여부
-var email_responese = false; //인증받았는지 여부
-var radio_bool = false; // 라디오박스 체크 여부
+// static variable management------------------------
+var isRequestEmail = false; //인증보냈는지 여부
+var isResponseEmail = false; //인증받았는지 여부
+var isCheckRadio = false; // 라디오박스 체크 여부
 var regEmail =
   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+// get function management ---------------------------
+function getIsRequestEmail() {
+  return isRequestEmail;
+}
+
+function getIsResponseEmail() {
+  return isResponseEmail;
+}
+
+function getIsCheckRadio() {
+  return isCheckRadio;
+}
+
+// set function management ---------------------------
+function setIsRequestEmail(bool) {
+  return (isRequestEmail = bool);
+}
+
+function setIsResponseEmail(bool) {
+  return (isResponseEmail = bool);
+}
+
+function setTureIsCheckRadio() {
+  return (isCheckRadio = true);
+}
+
 // email 관련 function
 function check_email() {
-  email_request = false;
-  email_responese = false;
   var email = $("#signup_input_email");
   var email_err_msg = $("#signup_input_err_msg_email");
   if (!email.val().trim()) {
@@ -27,24 +52,56 @@ function check_email() {
 
 // 인증번호 전송 button click event
 $(".signup_email_certification_button").click(function () {
-  email_request = false;
-  var email_certification_num = $("#signup_input_email_num");
+  setIsResponseEmail(false);
   if (check_email()) {
-    //ajax 코드
-    email_request = true;
-    email_certification_num.attr("disabled", false);
-    email_certification_num.focus();
-    return true;
+    certificationHandler();
   } else {
-    email_request = false;
-    email_certification_num.attr("disabled", true);
+    setIsRequestEmail(false);
+    $("#signup_input_email_num").attr("disabled", true);
     return false;
   }
 });
 
+function certificationHandler() {
+  const emailInput = $("#signup_input_email");
+  var postData = {
+    email: emailInput.val().trim(),
+  };
+  // console.log(postData);
+  $.ajax({
+    url: "http://43.202.152.189/auth/validation",
+    type: "POST",
+    data: JSON.stringify(postData),
+    contentType: "application/json",
+    success: function (data) {
+      sessionStorage.setItem("email", JSON.stringify(emailInput.val().trim()));
+      alert("입력한 이메일 주소로 인증코드를 전송했습니다");
+      setIsRequestEmail(true);
+      $("#signup_input_email_num").attr("disabled", false);
+      $("#signup_input_email_num").focus();
+      return true;
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      if (jqXHR.status === 400) {
+        console.error("Bad Request:", jqXHR.responseText);
+        alert("형식이 일치하지 않습니다.");
+      } else if (jqXHR.status === 429) {
+        console.error("Too Many Requests:", jqXHR.responseText);
+        alert("1분 뒤 다시 시도하십시오.");
+      } else if (jqXHR.status === 503) {
+        console.error("Service Unavailable:", jqXHR.responseText);
+        alert("연결에 실패했습니다.");
+      } else {
+        console.error("Error:", jqXHR.status, errorThrown);
+        alert("서버가안대나?");
+      }
+    },
+  });
+}
+
 // 인증번호 확인 event function
 $(".signup_email_num_button").click(function () {
-  if (!email_request) {
+  if (!getIsRequestEmail()) {
     $("#signup_input_email").focus();
   } else if (!$("#signup_input_email_num").val().trim()) {
     $("#signup_input_email_num").focus();
@@ -54,24 +111,48 @@ $(".signup_email_num_button").click(function () {
 });
 
 function check_email_num() {
-  //ajax code
-  var certification_num = 1234; //test num
-  if ($("#signup_input_email_num").val().trim() == certification_num) {
-    alert("인증 성공");
-    $("#signup_input_email_num").attr("disabled", true);
-    $("#signup_input_name").focus();
-    email_responese = true;
-    return true;
-  } else {
-    alert("인증 실패");
-    $("#signup_input_email_num").focus();
-    email_responese = false;
-    return false;
-  }
+  var postData = {
+    email: JSON.parse(sessionStorage.getItem("email")),
+    code: $("#signup_input_email_num").val().trim(),
+  };
+  // console.log(postData);
+  $.ajax({
+    url: "http://43.202.152.189/auth/validation/check",
+    type: "POST",
+    data: JSON.stringify(postData),
+    contentType: "application/json",
+    success: function (data) {
+      alert("인증 성공");
+      sessionStorage.setItem("code", JSON.stringify(postData.code));
+      $("#signup_input_email_num").attr("disabled", true);
+      $("#signup_input_name").focus();
+      setIsResponseEmail(true);
+      return true;
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      if (jqXHR.status === 400) {
+        console.error("Bad Request:", jqXHR.responseText);
+        alert("형식이 일치하지 않습니다.");
+      } else if (jqXHR.status === 401) {
+        console.error("Unauthorized:", jqXHR.responseText);
+        alert("인증번호가 일치하지 않습니다.");
+      } else {
+        console.error("Error:", jqXHR.status, errorThrown);
+        alert("서버가안대나?");
+      }
+      $("#signup_input_email_num").focus();
+      setIsResponseEmail(false);
+      return false;
+    },
+  });
 }
 
 function check_name() {
   return $("#signup_input_name").val().trim() ? true : false;
+}
+
+function check_handle() {
+  return $("#signup_input_handle").val().trim() ? true : false;
 }
 
 function check_password() {
@@ -123,7 +204,7 @@ $("#signup_input_password").on(
 
 //radio button click event
 $("input:radio[name=radiobutton1]").click(function () {
-  if ($("input:radio[name=radiobutton1]:checked").val() === "기업") {
+  if ($("input:radio[name=radiobutton1]:checked").val() === "business") {
     $("#radiobutton1_label2").css("background-color", "#6970f2");
     $("#radiobutton1_label2").css("color", "white");
     $("#radiobutton1_label1").css(
@@ -140,54 +221,72 @@ $("input:radio[name=radiobutton1]").click(function () {
     );
     $("#radiobutton1_label2").css("color", "black");
   }
-  radio_bool = true;
+  setTureIsCheckRadio();
 });
 
 // ok button click event
 $(".signup_signup_btn").click(function () {
   if (!check_email()) {
-  } else if (!email_request || !email_responese) {
+  } else if (!getIsRequestEmail() || !getIsResponseEmail()) {
     $("#signup_input_email_num").focus();
   } else if (!check_name()) {
     $("#signup_input_name").focus();
+  } else if (!check_handle()) {
+    $("#signup_input_handle").focus();
   } else if (!check_password()) {
     $("#signup_input_password").focus();
   } else if (!check_re_password()) {
     $("#signup_input_re_password").focus();
   } else if (!password_matching()) {
     $("#signup_input_re_password").focus();
-  } else if (!radio_bool) {
+  } else if (!getIsCheckRadio()) {
     alert("사용자 유형을 선택해주세요");
   } else {
-    var formData = {
-      email: $("#signup_input_email").val().trim(),
+    var postData = {
+      email: JSON.parse(sessionStorage.getItem("email")),
+      code: JSON.parse(sessionStorage.getItem("code")),
       name: $("#signup_input_name").val().trim(),
       password: $("#signup_input_password").val().trim(),
-      check: $("input[name=radiobutton1]:checked").val(),
+      handle: $("#signup_input_handle").val().trim(),
+      account_type:
+        $("input[name=radiobutton1]:checked").val() == "personal" ? 1 : 2,
+      // email: "test2@test.com",
+      // code: "123455",
+      // name: "2연출",
+      // username: "2연출",
+      // password: "1234",
+      // handle: "test2",
+      // account_type: 2,
     };
-    console.log(formData);
-    // $.ajax({
-    //   url: url,
-    //   type: "GET",
-    //   dataType: "json",
-    //   data: formData,
-    //   success: function (data) {
-    //     console.log(data);
-    //   },
-    //   error: function (request, status, error) {
-    //     console.log(
-    //       "code:" +
-    //         request.status +
-    //         "\n" +
-    //         "message:" +
-    //         request.responseText +
-    //         "\n" +
-    //         "error:" +
-    //         error
-    //     );
-    //   },
-    // });
-    window.location.href = "./login.html";
+    // console.log(postData);
+    $.ajax({
+      url: "http://43.202.152.189/user",
+      type: "POST",
+      data: JSON.stringify(postData),
+      contentType: "application/json",
+      success: function (data) {
+        // console.log(data);
+        alert("회원가입 성공");
+        window.location.href = "./login.html";
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 400) {
+          console.error("Bad Request:", jqXHR.responseText);
+          alert("형식이 일치하지 않습니다.");
+        } else if (jqXHR.status === 401) {
+          console.error("Unauthorized:", jqXHR.responseText);
+          alert("인증번호가 일치하지 않습니다.");
+        } else if (jqXHR.status === 409) {
+          console.error("Conflict:", jqXHR.responseText);
+          alert("동일한 이메일, 핸들로 가입한 사용자가 존재합니다.");
+        } else {
+          console.error("Error:", jqXHR.status, errorThrown);
+          alert("서버가안대나?");
+        }
+        $("#signup_input_email_num").focus();
+        return false;
+      },
+    });
   }
 });
 

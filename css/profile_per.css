@@ -1,0 +1,321 @@
+/* 
+    개인 프로필(게시물 여러개) 
+    개인 프로필(게시물 없음)
+*/
+
+a:link { /* 아직 방문하지 않은 링크의 색 정의*/
+    color: #000;
+}
+
+a:visited { /* 방문한 적이 있는 링크의 색 정의*/
+    color:#000;
+}
+
+a:hover { /* 마우스를 링크에 올려두었을 때의 색 정의*/
+    color:#000;
+}
+
+a:active { /* 마우스로 링크를 클릭하고 뗄 때까지의 색 정의*/
+    color:#000;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+body {
+    color: #000;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* header부분 */
+/* 상단 */
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4.75rem;
+    padding: 0 2.5rem;
+}
+
+.head_btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+.hamburger_btn {
+    margin-left: 0.56rem;
+}
+
+/* 프사, 게시물, 팔로워, 팔로잉, 이름 */
+.information_inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile_img {
+    margin-left: 2.44rem;
+}
+
+#pro_img {
+    width: 70px;
+    height: 70px;
+    border-radius: 70%;
+}
+
+.pff {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #000;
+    font-family: Inter;
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-right: 2.44rem;
+    
+}
+
+.pff_product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.number {
+    margin: 0;
+}
+
+.text {
+    margin: 0;
+}
+
+#followers {
+    padding-left: 1.5rem;
+}
+
+#following {
+    padding-left: 1rem;
+}
+
+.name {
+    margin-left: 2.44rem;
+    margin-top: 1.5rem;
+}
+
+/* main파트 edit profile/배지/피드 부분 */
+
+#main {
+    margin-top: 2.12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit_profile_btn {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.follow_btn {
+    border: none;
+    width: 7.1875rem;
+    height: 1.4375rem;
+    border-radius: 0.3125rem;
+    background: rgba(80, 157, 228, 0.96);
+    margin-right: 1.25rem;
+}
+
+.edit_btn {
+    border: none;
+    width: 7.1875rem;
+    height: 1.4375rem;
+    border-radius: 0.3125rem;
+    background-color: rgba(217, 217, 217, 0.50);
+}
+
+.edit_btn a {
+    color: #000;
+    font-family: Inter;
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: none;
+}
+
+.badge_field {
+    width: 100%;
+    margin-top: 2.21rem;
+    margin-bottom: 1rem;
+}
+
+.badge_inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2.44rem;
+    margin-right: 2.44rem;
+}
+
+.badge {
+    padding:0 1rem;
+}
+
+.feed_slide {
+    width: 80%;
+}
+
+.feed_inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.line_field {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+
+.line {
+    margin: 0;
+    fill: #000;
+    width: 50%;         /* 피그마는 12.0625rem */
+    height: 0.0625rem;
+}
+
+.feed {
+    width: 80%;
+}
+
+.my_feed {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.25rem;
+}
+
+.zero_feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 7.81rem;
+    color: #000;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width:200%;
+    margin-left: 50%;
+}
+
+.zero_feed img {
+    width: 3.75rem;
+    height: 3.8125rem;
+}
+
+.goto_feed {
+    width: 100%;
+    height: 100%;
+}
+
+.feed_img {
+    width: 93px;
+    height: 93px;
+}
+
+
+
+/*
+    모달창 디자인
+*/
+
+.modal_overlay {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.32);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal_content {
+    width: 15rem;
+    min-height: 20rem;
+    height: fit-content;
+    flex-shrink: 0;
+    padding: 1rem;
+    margin: 0;
+    border-radius: 0.5rem;
+    border: 1px solid #777;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal_header {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+
+  .close_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid black;
+  }
+
+  .modal_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+
+  .image_wrap {
+    padding: 2rem 0;
+    height: 7.625rem;
+  }
+
+  .modal_image {
+    height: 100%;
+  }
+
+  .modal_document {
+    box-sizing: border-box;
+    padding-top: 1rem;
+    flex: 1;
+    min-height: 5rem;
+    width: 100%;
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.60);
+    color: #000;
+    font-family: Inter;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }

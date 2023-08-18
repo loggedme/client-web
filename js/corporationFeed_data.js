@@ -34,6 +34,16 @@ $.getJSON("../mock/corporationFeedData.json", function (data) {
         var currentSrc = saveImg.attr("src");
         var newSrc = currentSrc === "../image/save.png" ? "../image/filled_save.png" : "../image/save.png";
         saveImg.attr("src", newSrc);
+
+        if (saveLink.hasClass("filled_save_link")) {
+          saveLink.removeClass("filled_save_link");
+          saveLink.addClass("save_link");
+         
+      } else {
+          saveLink.removeClass("save_link");
+          saveLink.addClass("filled_save_link");
+          
+      }
       });
       var unfollowBtn = $("<button type=button>").addClass("unfollow_btn").html("팔로우 취소");
       
@@ -95,13 +105,24 @@ $.getJSON("../mock/corporationFeedData.json", function (data) {
 
       prevBtn.prop("disabled", true);
 
-      prevBtn.on("click", function () {
-        if (!sliding) {
-          sliding = true;
-          currentSlideIndex = (currentSlideIndex - 1 + images.length) % images.length;
-          updateSlide();
-        } 
-      });
+      prevBtn.on("click", goToPrev);
+
+        // 이미지 슬라이드 함수
+        function goToPrev() {
+          if (!sliding) {
+              sliding = true;
+              currentSlideIndex = (currentSlideIndex - 1 + images.length) % images.length;
+              updateSlide();
+            } 
+        }
+
+        function goToNext() {
+          if (!sliding) {
+              sliding = true;
+              currentSlideIndex = (currentSlideIndex + 1) % images.length;
+              updateSlide();
+            }
+        }
 
       nextBtn.on("click", function () {
         if (!sliding) {
@@ -185,13 +206,27 @@ $.getJSON("../mock/corporationFeedData.json", function (data) {
       var heartLink = $("<button type=button>")
       .addClass("heart_link")
       .on("click", function() {
-        var currentSrc = heartImg.attr("src");
-        var newSrc = currentSrc === "../image/heart.png" ? "../image/filled_heart.png" : "../image/heart.png";
-        heartImg.attr("src", newSrc);
-      });
+          var currentSrc = heartImg.attr("src");
+          var newSrc = currentSrc === "../image/heart.png" ? "../image/filled_heart.png" : "../image/heart.png";
+          heartImg.attr("src", newSrc);
+
+          if (heartLink.hasClass("filled_heart_link")) {
+              heartLink.removeClass("filled_heart_link");
+              heartLink.addClass("heart_link");
+          } else {
+              heartLink.removeClass("heart_link");
+              heartLink.addClass("filled_heart_link");
+          }
+
+          
+        });
+
       heartLink.append(heartImg);
+
+      heartLink.append(heartImg);
+
   
-      var commentLink = $("<button type=button>")
+      var commentLink = $("<button type=button id=comment_btn>")
       .addClass("comment_link")
       .on("click", function () {
         openModal(item.feedId, data); 

@@ -12,7 +12,7 @@ header {
   font-family: Inter;
   font-size: 1.0625rem;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: normal;
   margin-top: 2.63rem;
 }
@@ -21,6 +21,8 @@ header {
   width: 100%;
   display: flex;
   margin-top: 1.06rem;
+  display: flex;
+  align-items: center;
 }
 
 .goback_btn {
@@ -29,6 +31,9 @@ header {
   border: none;
   background-color: transparent;
   align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search_input_wrap {
@@ -54,6 +59,7 @@ header {
   background-color: transparent;
   height: 2.625rem;
   flex: 1;
+  outline: none;
 }
 
 .main_header_empty_div {
@@ -67,6 +73,28 @@ header {
   align-items: center;
 }
 
+.checked_person_section {
+  width: 100%;
+  height: 3.5rem;
+  border-top: 1px solid rgba(217, 217, 217, 0.1);
+  border-bottom: 1px solid rgba(217, 217, 217, 0.1);
+  background-color: rgba(217, 217, 217, 0.5);
+  margin: 1rem 0rem 0rem 0rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 1rem;
+  overflow-x: auto;
+}
+
+.checked_person_element {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  flex-shrink: 0; /* 크기 감소 방지 */
+  margin-left: 1rem;
+}
 .main_section_title {
   color: #000;
   font-family: Inter;
@@ -75,10 +103,10 @@ header {
   font-weight: 400;
   line-height: normal;
   width: 100%;
-  padding-left: 1.2rem;
+  padding-left: 3.3rem;
   box-sizing: border-box;
   padding-bottom: 0.56rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+  border-bottom: 0.0125rem solid rgba(0, 0, 0, 0.6);
 }
 
 .main_section {
@@ -100,9 +128,9 @@ header {
 }
 
 .item_image_wrap {
-  flex: 1;
+  flex: 2;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   margin-right: 1rem;
 }
@@ -114,10 +142,12 @@ header {
 }
 
 .item_username_wrap {
-  flex: 2;
+  flex: 4;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
+  padding-left: 1rem;
 }
 
 .item_userhandle {
@@ -130,20 +160,10 @@ header {
   line-height: normal;
 }
 
-.item_checkbox_wrap {
-  flex: 1;
-  align-items: center;
-  display: flex;
-  justify-content: end;
+img.item_image:not([src]) {
+  content: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232");
 }
 
-.item_checkbox_btn {
-  display: none;
-}
-
-.item_checkbox_btn_label {
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  background-color: rgba(217, 217, 217, 0.7);
+img.checked_person_element:not([src]) {
+  content: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232");
 }

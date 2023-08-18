@@ -12,21 +12,21 @@
 
 <body>
   <header>
-    <a href="#">
+    <a href="../html/corporation_feed.html">
         <img src="../image/logo.png" alt="logo">
     </a>
     </header>
 
   <main>
     <div class="search_header">
-        <a id="goBack" href="javascript:history.back();">
+        <a id="goBack">
             <img src="../image/goback.png" alt="goBack"
                 width="30rem" height="30rem" style="padding-top: 0.2rem;"
             >
         </a>
         <div class="search_bar">
             <img src="../image/bottom_nav_search.png" alt="search_icon">
-            <input type="text" id="search_input" placeholder="search">
+            <input type="text" id="search_input" autocomplete="off" placeholder="search">
         </div>
     </div>
 
@@ -62,15 +62,20 @@
             <div class="person_search_list"></div>
         </div>
 
+        <!-- 탐색 검색 > 기업 페이지 -->
         <div class="company_container">
             <h2 style="margin: 0;">기업</h2>
             <div class="company_search_list"></div>
         </div>
 
+        <!-- 탐색 검색 > 해쉬태그 페이지 -->
         <div class="hashtag_container">
             <h2 style="margin: 0;">해시태그</h2>
             <div class="hashtag_search_list"></div>
         </div>
+
+        <div class="grid_container_hashtag"></div>
+
     </div>
   </main>
 
@@ -81,18 +86,16 @@
         id="bottom_nav_person_image" class="base_bottom_nav_item_image"></a>
     <a href="./search_main.html" class="base_bottom_nav_item"><img src="../image/bottom_nav_search.png" alt="search"
         id="bottom_nav_search_image" class="base_bottom_nav_item_image"></a>
-    <a href="#" class="base_bottom_nav_item"><img src="../image/bottom_nav_plus.png" alt="addPost"
+    <a href="./new_feed2.html" class="base_bottom_nav_item"><img src="../image/bottom_nav_plus.png" alt="addPost"
         class="base_bottom_nav_plus_image">
     </a>
-    <a href="#" class="base_bottom_nav_item"><img src="../image/bottom_nav_profile.png" alt="profile"
-        id="bottom_nav_profile_image" class="base_bottom_nav_item_image"></a>
+    <div class="base_bottom_nav_item"><img src="../image/bottom_nav_profile.png" alt="profile"
+        id="bottom_nav_profile_image" class="base_bottom_nav_item_image"></div>
   </section>
 </body>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="../js/search_page.js"></script>
-<script src="../js/search_person.js"></script>
-<script src="../js/search_company.js"></script>
-<script src="../js/search_hashtag.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/search_page_input.js"></script>
 <script src="../js/search_main.js"></script>
 </html>

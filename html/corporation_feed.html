@@ -11,8 +11,8 @@
 
 <body>
   <header>
-    <a href="#">
-        <img src="../image/logo.png" alt="logo">
+    <a href="../html/corporation_feed.html">
+      <img src="../image/logo.png" alt="logo">
     </a>
   </header>
 
@@ -20,13 +20,11 @@
     <div class="feed_header">
       <div class="feed_header_bar">
         <a href="javascript:history.back();">
-            <img src="../image/goback.png" alt="goBack"
-                width="30rem" height="30rem" style="padding-top: 0.2rem;"
-            >
+          <img src="../image/goback.png" alt="goBack" width="30rem" height="30rem" style="padding-top: 0.2rem;">
         </a>
-        <a href="#">
-            <img src="../image/notification.png" alt="notification"
-                width="40rem" height="30rem" style="padding-top: 0.2rem;">
+        <a href="../html/notification.html">
+          <img src="../image/notification.png" alt="notification" width="40rem" height="30rem"
+            style="padding-top: 0.2rem;">
         </a>
       </div>
 
@@ -38,22 +36,27 @@
     <!-- 모달창 -->
     <div class="modal">
       <div class="modal_content">
-        <div class="modal_header">
-          <h2>댓글</h2>
-          <span class="close_modal">&times;</span>
+        <div class="modal_header_container">
+          <div class="modal_header">
+            <h2>댓글</h2>
+            <span class="close_modal">&times;</span>
+          </div>
         </div>
-        <hr>
         <div class="modal_body">
-          <div class="userFeed_container"></div>
-          
+          <div class="feeds_container"></div>
+
           <hr>
 
           <!-- 댓글 목록을 표시할 컨테이너 -->
           <div class="comments_container"></div>
         </div>
+
+        <!-- 댓글 작성 컨테이너 -->
+        <div class="postComment">
+
+        </div>
       </div>
     </div>
-    
 
   </main>
 
@@ -62,17 +65,20 @@
         alt="enterprise" id="bottom_nav_enterprise_image" class="base_bottom_nav_item_image"></a>
     <a href="./personal_feed.html" class="base_bottom_nav_item"><img src="../image/bottom_nav_person.png" alt="person"
         id="bottom_nav_person_image" class="base_bottom_nav_item_image"></a>
-    <a href="search_main.html" class="base_bottom_nav_item"><img src="../image/bottom_nav_search.png" alt="search"
+    <a href="./search_main.html" class="base_bottom_nav_item"><img src="../image/bottom_nav_search.png" alt="search"
         id="bottom_nav_search_image" class="base_bottom_nav_item_image"></a>
-    <a href="#" class="base_bottom_nav_item"><img src="../image/bottom_nav_plus.png" alt="addPost"
+    <a href="./new_feed2.html" class="base_bottom_nav_item"><img src="../image/bottom_nav_plus.png" alt="addPost"
         class="base_bottom_nav_plus_image">
     </a>
-    <a href="#" class="base_bottom_nav_item"><img src="../image/bottom_nav_profile.png" alt="profile"
-        id="bottom_nav_profile_image" class="base_bottom_nav_item_image"></a>
+    <div class="base_bottom_nav_item"><img src="../image/bottom_nav_profile.png" alt="profile"
+        id="bottom_nav_profile_image" class="base_bottom_nav_item_image"></div>
   </section>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="../js/corporation_feed.js"></script>
-<script src="../js/corporationFeed_data.js"></script>
+<!-- <script src="../js/corporation_feed.js"></script> -->
+<script src="../js/base.js"></script>
+<script src="../js/corporationFeed_Mockup.js"></script>
+<script src="../js/corporationFeed_function.js"></script>
+<!-- <script src="../js/corporationFeed_data.js"></script> -->
 
 </html>
