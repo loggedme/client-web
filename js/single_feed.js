@@ -216,13 +216,13 @@ $(document).ready(function (jwtToken) {
             heartLink.removeClass("filled_heart_link");
             heartLink.addClass("heart_link");
             data.is_liked = false;
-            unlikedFeed(currentFeedId);
+            unlikedFeed(currentFeedId, likesNum);
           } else {
             newSrc = "../image/filled_heart.png";
             heartLink.addClass("filled_heart_link");
             heartLink.removeClass("heart_link");
             data.is_liked = true;
-            likedFeed(currentFeedId);
+            likedFeed(currentFeedId, likesNum);
           }
 
           heartImg.attr("src", newSrc);
@@ -374,10 +374,22 @@ $(document).ready(function (jwtToken) {
         IdHashtag.append(bottomUserId);
       }
 
-      var feedScript = $("<div>").prop({
-        class: "feed_script",
-        textContent: data.content,
-      });
+      var feedScript = $("<div>").addClass("feed_script");
+
+        // 해시태그 정규식
+        var hashtagRegex = /#[a-zA-Z0-9ㄱ-힣_]+/g; // _도 포함하여 해시태그 매칭
+        var content = data.content;
+        var splitContent = content.split(hashtagRegex); // 해시태그 기준으로 문자열 분할
+        var hashtags = content.match(hashtagRegex); // 해시태그 추출
+        
+        // 분할된 문자열과 해시태그를 순서대로 삽입
+        for (var i = 0; i < splitContent.length; i++) {
+            feedScript.append(splitContent[i]);
+            if (hashtags && i < hashtags.length) { // hashtags 배열이 null이 아닌 경우에만 처리
+                var hashtag = $("<span>").addClass("hashtag").text(hashtags[i]);
+                feedScript.append(hashtag);
+            }
+        }
 
       // 업로드 날짜 (현재로부터 얼마 전인지)
       var uploaded_date = $("<div>").addClass("uploaded_date");

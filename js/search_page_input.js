@@ -19,9 +19,9 @@ $(document).ready(function () {
   var underline = $(".searchPage_nav_underline");
   var currentSearchTerm = ""; // 현재 검색어
 
-  // 검색 개인,회사,해쉬태그 페이지 숨기기
+  // 검색 개인,회사,해쉬태그, 해쉬태그 검색 목록 페이지 숨기기
   $(
-    ".searchInner_nav, .person_container, .company_container, .hashtag_container"
+    ".searchInner_nav, .person_container, .company_container, .hashtag_container, .grid_container_hashtag"
   ).hide("fast");
 
   // 디바운스 oninput 이벤트
@@ -79,7 +79,7 @@ $(document).ready(function () {
           Authorization: `Bearer ${jwtToken}`,
         },
         success: function (data) {
-          console.log("sueccess: " + JSON.stringify(data));
+          //console.log("sueccess: " + JSON.stringify(data));
 
           // 개인, 기업 검색
           $.each(data.user.items, function (index, item) {
@@ -147,6 +147,9 @@ $(document).ready(function () {
           $.each(data.hashtag.items, function (index, item) {
             var hashtagItem = $("<a>").prop({
               class: "hashtag_item",
+            })
+            .on("click", function () {
+              hashtagSearchDetail(item.name);
             });
             var imgElement = $("<img>").attr({
               src: "../image/hashtag.png",
@@ -171,13 +174,13 @@ $(document).ready(function () {
           console.error("Error:", jqXHR.status, errorThrown);
         },
       });
-    }, 300)
+    }, 1000)
   );
 
   searchInput.on("input", function () {
     // 탐색 메인 페이지 숨기기
     $(
-      ".grid_container_forYou, .searchMain_nav, .grid_container_person, .grid_container_company"
+      ".grid_container_forYou, .searchMain_nav, .grid_container_person, .grid_container_company, .grid_container_hashtag"
     ).hide("fast");
     // 검색어 없으면 탐색 메인페이지 보이기
     if (searchInput.val() === "") {
@@ -200,7 +203,7 @@ $(document).ready(function () {
   // Person 클릭시 개인 검색만 보기
   searchPerson.on("click", function () {
     $(".person_container").fadeIn("fast");
-    $(".company_container, .hashtag_container").hide("fast");
+    $(".company_container, .hashtag_container, .grid_container_hashtag").hide("fast");
     underline.css("transform", "translateX(-110%)");
     searchPerson.addClass("selected");
     searchCompany.removeClass("selected");
@@ -249,4 +252,41 @@ function debounce(func, wait) {
       func.apply(context, args);
     }, wait);
   };
+}
+
+function hashtagSearchDetail(hashtagName) {
+  var jwtToken = getTokenFromSessionStorage();
+  $.ajax({
+    url: `http://43.202.152.189/feed?hashtag=${hashtagName}`,  //입력한 값이 아니라 그 입력한 값의 전체
+    type: "GET",
+    dataType: "json",
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+    },
+    success: function (data) {
+      console.log("sueccess: " + JSON.stringify(data));
+
+      $.each(data.items, function (index, item) {
+        var hashtagImgItem = $("<a>")
+          .addClass("img_item")
+          .on("click", function () {
+            window.location.href = `./single_feed.html?feedId=${item.id}`;
+          });
+        var hashtagImgElement = $("<img>").attr({
+          src: item.image_urls,
+          // alt: item.image_urls,
+          width: "13rem",
+          height: "13rem",
+        });
+
+        hashtagImgItem.append(hashtagImgElement);
+        $(".grid_container_hashtag").append(hashtagImgItem);
+
+        $(".grid_container_hashtag").show();
+        $(".searchInner_nav").hide();
+        $(".hashtag_container").hide();
+      });
+
+    }
+  });
 }

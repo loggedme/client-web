@@ -86,7 +86,7 @@ $.ajax({
 
       for (let i = 0; i < imageLengthCount; i++) {
         template += `
-        <div class="slider" role="group"><img class="sliderImg" style="width:364px; height:374px;" src="${imageList[i]}"></div>\n
+        <div class="slider" role="group"><img class="sliderImg" style="width:330px; height:374px;" src="${imageList[i]}"></div>\n
         `;
       }
       sliderLengthCount += imageLengthCount;
@@ -188,17 +188,17 @@ if (getCurrentAccountTypeFromSessionStorage() == 1) {
     success: function (data) {
       var company_template = ``;
 
-    for (let i = 0; i < data.length; i++) {
-      company_template += `
-      <div class="company_item">
-        <div class="company">
-            <img class="company_image" src="${data[i].thumbnail}">
-            <p class="company_name">${data[i].handle}</p>
+      for (let i = 0; i < data.length; i++) {
+        company_template += `
+        <div class="company_item">
+          <div class="company">
+              <img class="company_image" src="${data[i].thumbnail}">
+              <p class="company_name">${data[i].handle}</p>
+          </div>
+          <input id="tagged" type="radio" name="tagged" value="${data[i].handle}">
         </div>
-        <input type="radio" name="tagged" value="${data[i].handle}">
-      </div>
-      `;
-    }
+        `;
+      }
       $(".company_list").append(company_template);
 
       $(".tag_Done").click(function () {
@@ -259,33 +259,26 @@ function getCurrentFeedContentFromSessionStorage() {
 /* ajax Done 눌렀을 때, put 전송 */
 
 $("#Done").click(function () {
-  if (getCurrentAccountTypeFromSessionStorage() == 1) {
-    var putData = {
-      content: giveText(),
-      image_urls: [
-        "http://...~bar.??",
-        "http://...~foo.??",
-        "http://...~faz.??",
-      ],
-      tagged_user: $(".tagged_company").val(),
-    };
-  } else if (getCurrentAccountTypeFromSessionStorage() == 2) {
-    var putData = {
-      content: giveText(),
-      image_urls: [
-        "http://...~bar.??",
-        "http://...~foo.??",
-        "http://...~faz.??",
-      ],
-    };
-  }
+  var formData = new FormData();
+
+  const TextToFrom = $("#text").val();
+  const TaggedCompanyToForm = $("#tagged").val();
+
+  
+  formData.append("content", TextToFrom);
+  formData.append("tagged_user", TaggedCompanyToForm);
+
   $.ajax({
     url: `http://43.202.152.189/feed/${feedId}`,
     type: "PUT",
-    data: JSON.stringify(putData),
-    contentType: "application/json",
-    success: function (response) {
-      console.log("Response:", response);
+    data: formData,
+    processData: false, // FormData 처리 방지
+    contentType: false, // 컨텐츠 타입 설정 방지
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+    },
+    success: function (data) {
+      console.log("Response:", data);
 
       // 수정 완료되면 싱글 페이지로 이동
       window.location.href = `./single_feed.html?feedId=${data.id}`;
@@ -293,12 +286,19 @@ $("#Done").click(function () {
     error: function (jqXHR, textStatus, errorThrown) {
       if (jqXHR.status === 400) {
         console.error("Bad Request:", jqXHR.responseText);
+        alert("이메일 형식이 올바르지 않은 경우");
       } else if (jqXHR.status === 401) {
         console.error("Unauthorized:", jqXHR.responseText);
+        alert("로그인 되지 않은 사용자.");
+      } else if(jqXHR.status === 403) {
+        console.error("Forbidden:", jqXHR.responseText);
+        alert("로그인은 되어 있으나, 자신이 작성한 피드가 아닐때");
       } else if (jqXHR.status === 404) {
         console.error("Not Found:", jqXHR.responseText);
-      } else {
-        console.error("Error:", jqXHR.status, errorThrown);
+        alert("피드가 존재하지 않음");
+      } else if (jqXHR.status === 413) {
+        console.error("Payload Too Large:", jqXHR.responseText);
+        alert("이미지의 크기가 규격보다 클 때");
       }
     },
   });

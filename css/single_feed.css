@@ -274,13 +274,13 @@ a:active {
 .feed_hashtag {
     margin-left: 0.5rem;
     cursor: pointer;    
-    color: #3E93E1;
+    color: #6970F2;
 }
 
 .feed_hashtag:visited,
 .feed_hashtag:link,
 .feed_hashtag:active {
-    color: #3E93E1;
+    color: #6970F2;
 }
 
 .feed_script {
@@ -289,6 +289,10 @@ a:active {
     margin-bottom: 0.4rem;
     width: 100%;
     word-break: break-all;
+}
+
+.hashtag {
+    color: #3E93E1;
 }
 
 /* 댓글 css */
@@ -504,14 +508,14 @@ a:active {
 #empty1 {
     font-size: large;
     font-weight: bold;
-    margin-left: 3.5rem;
+    margin-left: 4.5rem;
     margin-top: 1.5rem;
 }
 
 #empty2 {
     font-size: small;
     color: #888;
-    margin-left: 5rem;
+    margin-left: 6rem;
     margin-top: 0.5rem;
 }
 

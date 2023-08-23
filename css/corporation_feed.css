@@ -433,6 +433,10 @@ a:active {
     flex-direction: column;
 }
 
+.hashtag {
+    color: #3E93E1;
+}
+
 /* 댓글 작성 css */
 .postComment {
     width: 80%;
@@ -502,14 +506,14 @@ a:active {
 #empty1 {
     font-size: large;
     font-weight: bold;
-    margin-left: 3.5rem;
+    margin-left: 4.5rem;
     margin-top: 1.5rem;
 }
 
 #empty2 {
     font-size: small;
     color: #888;
-    margin-left: 5rem;
+    margin-left: 6rem;
     margin-top: 0.5rem;
 }
 

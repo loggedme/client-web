@@ -1,7 +1,11 @@
 var jwtToken = getTokenFromSessionStorage();
+var currentUserId = getCurrentUserIdFromSessionStorage();
+var userAccountType = getCurrentUserAccountTypeFromSessionStorage();
+var userThumbnail = getCurrentUserThumbnailFromSessionStorage();
+var handle = sessionStorage.getItem("handle");
 
 //좋아요 버튼
-function likedFeed(feedId, itemIndex) {
+function likedFeed(feedId, likesNum) {
   $.ajax({
     url: `http://43.202.152.189/feed/${feedId}/like`,
     type: "POST",
@@ -11,7 +15,8 @@ function likedFeed(feedId, itemIndex) {
     success: function (data) {
       console.log("좋아요 성공: " + JSON.stringify(data));
 
-      updateLikesCount(itemIndex, 1);
+      likesNum++;
+      $(".likesNum_container").text(`${likesNum}명이 좋아합니다.`);
     },
     error: function (jqXHR, textStatus, errorThrown) {
       if (jqXHR.status === 401) {
@@ -39,7 +44,7 @@ function likedFeed(feedId, itemIndex) {
   });
 }
 // 좋아요 취소 버튼
-function unlikedFeed(feedId, itemIndex) {
+function unlikedFeed(feedId, likesNum) {
   $.ajax({
     url: `http://43.202.152.189/feed/${feedId}/like`,
     type: "DELETE",
@@ -48,8 +53,13 @@ function unlikedFeed(feedId, itemIndex) {
     },
     success: function (data) {
       console.log("좋아요 취소 성공: " + JSON.stringify(data));
-
-      updateLikesCount(itemIndex, -1);
+      if (likesNum === 0) {
+        $(".likesNum_container").text(`${likesNum}명이 좋아합니다.`);
+      } else {
+        likesNum--;
+        $(".likesNum_container").text(`${likesNum}명이 좋아합니다.`);
+      }
+      
     },
     error: function (jqXHR, textStatus, errorThrown) {
       if (jqXHR.status === 401) {
@@ -222,7 +232,7 @@ function openModal(feedId, userId, userProfileLink) {
                                 </div>
                             </div>
                             <div class="deleteCommentBtn ${deleteCommentBtnClass}">
-                                <button type="button" onclick="deleteComment('${feedId}', '${comment.id}')">삭제</button>
+                                <button type="button" onclick="deleteComment('${feedId}', '${comment.id}', this)">삭제</button>
                             </div>
                         </div>
                     `;
@@ -277,8 +287,42 @@ function postingComment(feedId) {
     data: JSON.stringify({ content: commentContent }),
     contentType: "application/json",
     success: function (data) {
-      console.log("댓글 작성 성공: " + JSON.stringify(data));
       $("#comment_input").val("");
+
+      console.log("댓글 작성 성공: " + JSON.stringify(data));
+      
+      // 작성한 댓글 정보 가져오기
+      var uploadedComment = {
+        author: {
+          handle: handle, // 여기에 실제 handle 값을 넣어주세요
+          thumbnail: userThumbnail, // 여기에 실제 thumbnail URL을 넣어주세요
+        },
+        content: commentContent,
+        created_at: new Date().toISOString(), // 작성 시간 설정 (현재 시간으로 임시 설정)
+      };
+
+      // 새로운 댓글 요소 생성
+      var newComment = `
+        <div class="comments_item">
+            <div class="comments_user_info">
+                <a class="comment_author_img">
+                    <img src="${uploadedComment.author.thumbnail}">
+                </a>
+                <div class="comments_info">
+                    <div class="comments_idDate">
+                        <a style="margin-right: 0.5rem; font-weight: bold;">${uploadedComment.author.handle}</a>
+                        <div style="color:#888; font-size:small;">방금 전</div>
+                    </div>
+                    <div class="comments_content">${uploadedComment.content}</div>
+                </div>
+            </div>
+        </div>
+      `;
+
+      // 새로운 댓글 요소를 comments_container에 추가
+      $(".comments_container").append(newComment);
+      $(".comments_container #empty1, .comments_container #empty2").remove();
+
     },
     error: function (jqXHR, textStatus, errorThrown) {
       if (jqXHR.status === 400) {
@@ -321,8 +365,9 @@ function calculateUploadDate(created_at) {
 }
 
 // 댓글 삭제 버튼
-function deleteComment(feedId, commentId) {
+function deleteComment(feedId, commentId, deleteButton) {
   var jwtToken = getTokenFromSessionStorage();
+  var $commentItem = $(deleteButton).closest(".comments_item");
   $.ajax({
     url: `http://43.202.152.189/feed/${feedId}/comment/${commentId}`,
     type: "DELETE",
@@ -332,6 +377,8 @@ function deleteComment(feedId, commentId) {
     success: function (data) {
       console.log("sueccess: " + JSON.stringify(data));
       console.log(`댓글 삭제 성공: ${feedId}, ${commentId}`);
+      
+      $commentItem.empty();
     },
     error: function (jqXHR, textStatus, errorThrown) {
       if (jqXHR.status === 401) {
@@ -386,17 +433,38 @@ function deleteFeed(feedId) {
 }
 
 function copyLink(url) {
-  navigator.clipboard
-    .writeText(url)
-    .then(function () {
-      alert("URL이 복사되었습니다.");
-    })
-    .catch(function (error) {
-      console.error("복사 실패:", error);
-    });
+  if (navigator.clipboard) {
+    navigator.clipboard
+      .writeText(url)
+      .then(function () {
+        alert("URL이 복사되었습니다.");
+      })
+      .catch(function (error) {
+        console.error("복사 실패:", error);
+      });
+  } else {
+    // navigator.clipboard를 지원하지 않는 경우 대체 처리
+    console.warn("현재 브라우저에서는 클립보드 복사를 지원하지 않습니다.");
+  }
 }
 
 // 세션에서 받아올 값
 function getTokenFromSessionStorage() {
   return sessionStorage.getItem("jwtToken");
+}
+
+function getCurrentUserIdFromSessionStorage() {
+  return sessionStorage.getItem("currentUserId");
+}
+
+function getCurrentFeedIdFromSessionStorage() {
+  return sessionStorage.getItem("currentFeedId");
+}
+
+function getCurrentUserAccountTypeFromSessionStorage() {
+  return sessionStorage.getItem("currentUserAccountType");
+}
+
+function getCurrentUserThumbnailFromSessionStorage() {
+  return sessionStorage.getItem("thumbnail");
 }

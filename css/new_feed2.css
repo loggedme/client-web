@@ -1,47 +1,50 @@
 /*
     게시물 작성 페이지-2
 */
-a:link { /* 아직 방문하지 않은 링크의 색 정의*/
-    color: #000;
+a:link {
+  /* 아직 방문하지 않은 링크의 색 정의*/
+  color: #000;
 }
 
-a:visited { /* 방문한 적이 있는 링크의 색 정의*/
-    color:#000;
+a:visited {
+  /* 방문한 적이 있는 링크의 색 정의*/
+  color: #000;
 }
 
-a:hover { /* 마우스를 링크에 올려두었을 때의 색 정의*/
-    color:#000;
+a:hover {
+  /* 마우스를 링크에 올려두었을 때의 색 정의*/
+  color: #000;
 }
 
-a:active { /* 마우스로 링크를 클릭하고 뗄 때까지의 색 정의*/
-    color:#000;
+a:active {
+  /* 마우스로 링크를 클릭하고 뗄 때까지의 색 정의*/
+  color: #000;
 }
 
 body {
-    color: #000;
-    font-family: Inter;
-    font-size: 0.9375rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    display: border-box;
+  color: #000;
+  font-family: Inter;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: border-box;
 }
 
 .head {
-    padding-top: 3rem;
-    margin-bottom: 1.5rem;
-    margin-left: 0.88rem;
-    margin-right: 0.88rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;   
+  padding-top: 3rem;
+  margin-bottom: 1.5rem;
+  margin-left: 0.88rem;
+  margin-right: 0.88rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#Share{
-    text-decoration-line: none;
+#Share {
+  text-decoration-line: none;
 }
-
 
 /* 이미지 가운데로 오게 함 */
 /* preview 이미지 구간 
@@ -55,208 +58,208 @@ body {
 
 /********************* 시작부분!test new_feed1 슬라이더 ********************/
 .new_feed1 {
-    position: relative;
-    width: 360px;
-    height: 710px;
+  position: relative;
+  width: 360px;
+  height: 710px;
 }
 
 .new_feed2 {
-    position: relative;
-    width: 360px;
-    height: 710px
+  position: relative;
+  width: 360px;
+  height: 710px;
 }
 
 #Next {
-    text-decoration-line: none;
+  text-decoration-line: none;
 }
 
 /* preview 이미지 구간 */
 #new_post_image {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 100%;
 }
 
 #preview_image {
-    display: flex;
-    align-items: center;
-    width: 100px;
-    height: 360px;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 360px;
 }
 
 /* 추가한 이미지 구간 */
 .container {
-    margin-left: 2.06rem;
-    margin-right: 2.06rem;
+  margin-left: 2.06rem;
+  margin-right: 2.06rem;
 }
 
 .photo_add {
 }
 
 .preview_title {
-    margin-left: 0.63rem;
+  margin-left: 0.63rem;
 }
 
 @media (any-hover: hover) {
-    .inner:hover {
-        background-color: var(--hoverBg);
-    }
+  .inner:hover {
+    background-color: var(--hoverBg);
+  }
 }
 /* 추가되는 이미지 정렬 방식 */
 .preview {
-    z-index: 3;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 0.19rem;
-    grid-row-gap: 0.25rem;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 0.19rem;
+  grid-row-gap: 0.25rem;
 }
 
 /* 추가된 이미지의 크기 결정 */
 .embed-img {
-    width: 3rem;
-    height: 3rem;
-    object-position: center;
-    object-fit: cover;
+  width: 3rem;
+  height: 3rem;
+  object-position: center;
+  object-fit: cover;
 }
 
 /* 상단 preview 이미지 */
 .preview_image {
-    margin-left: 15px;
-    width: 330px;
-    height: 350px;
+  margin-left: 15px;
+  width: 330px;
+  height: 350px;
 }
 /********************* 끝 부분!test new_feed1 슬라이더 ********************/
 
 /* slider */
 .slider__wrap {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .page__wrap {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /* 이미지 보이는 부분 */
 .slider__img {
-    position: relative;
-    width: 330px;
-    height: 330px;
-    overflow: hidden;
+  position: relative;
+  width: 330px;
+  height: 330px;
+  overflow: hidden;
 }
 
 .page__img {
-    position: relative;
-    width: 360px;
-    height: 710px;
-    overflow: hidden; 
+  position: relative;
+  width: 360px;
+  height: 710px;
+  overflow: hidden;
 }
 
 /************ page 2개 대해서 overflow 히든을 이용해서 page width 2개 분량*/
 .page__inner {
-    display: flex;
-    flex-wrap: wrap;
-    width: 720px;
-    height: 710px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 720px;
+  height: 710px;
 }
 
 /* 이미지 감싸고 있는 부모 : 움직이는 부분 */
 .slider__inner {
-    display: flex;
-    flex-wrap: wrap;
-    /* 총 이미지 10개 */
-    width: 3300px;
-    height: 330px;
+  display: flex;
+  flex-wrap: wrap;
+  /* 총 이미지 10개 */
+  width: 3300px;
+  height: 330px;
 }
 /* 개별적인 이미지 */
 .slider {
-    position: relative;
-    width: 330px;
-    height: 330px;
+  position: relative;
+  width: 330px;
+  height: 330px;
 }
-.slider img{
-    width: 100%;
+.slider img {
+  width: 100%;
 }
 .slider::before {
-    position: absolute;
-    left: 5px;
-    top: 5px;
-    background: rgba(0, 0, 0, 0.4);
-    color: #fff;
-    padding: 5px 10px;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 5px 10px;
 }
 
 .slider__btn img {
-    position: absolute;
-    transform: translateX(-50%);
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    display: block;
-    color: #fff;
+  position: absolute;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  display: block;
+  color: #fff;
 }
 .slider__btn img:hover {
-    background: rgba(255,255,255,0.4);
-    color:#000;
+  background: rgba(255, 255, 255, 0.4);
+  color: #000;
 }
 .slider__btn img.prev {
-    left: 33px;
-    opacity: 0.3;
+  left: 33px;
+  opacity: 0.3;
 }
 .slider__btn img.next {
-    right: 33px;
-    opacity: 0.3;
+  right: 33px;
+  opacity: 0.3;
 }
 
 /* 점 부분 */
 .slider__dot {
-    position: absolute;
-    padding-top: 396px;
+  position: absolute;
+  padding-top: 396px;
 }
 .slider__dot .dot {
-    width: 10px;
-    height: 10px;
-    background: rgba(0,0,0,0.4);
-    display: inline-block;
-    border-radius: 50%;
-    text-indent: -9999px;
-    transition: all 0.3s;
-    margin: 2px;
+  width: 10px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  border-radius: 50%;
+  text-indent: -9999px;
+  transition: all 0.3s;
+  margin: 2px;
 }
 .slider__dot .dot.active {
-    background: black;
+  background: black;
 }
 
 /* 피드 콘텐츠(프로필 이미지, 내용, 기업태그 등) */
 #feed_content {
-    display: flex;
-    justify-content: center;
-    margin-top: 41px;
+  display: flex;
+  justify-content: center;
+  margin-top: 41px;
 }
 
 .profile_image {
-    width: 48px;
-    height: 46px;
+  width: 48px;
+  height: 46px;
 }
 
 #profile {
-    margin-left: 15px;
-    width: 48px;
-    height: 46px;
-    border-radius: 70%;
+  margin-left: 15px;
+  width: 48px;
+  height: 46px;
+  border-radius: 70%;
 }
 
 #text {
-    width: 316px;
-    padding-left: 8px;
-    border: none;
+  width: 316px;
+  padding-left: 8px;
+  border: none;
 }
 
 /* 
@@ -264,174 +267,178 @@ body {
 */
 
 #open_modal {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1.84rem;
-    width: 360px;
-    height: 4.31rem;
-    padding-top: 1.37rem;
-    padding-bottom: 1.81rem;
-    border-left: none;
-    border-right: none;
-    border-top-width: 0.0125rem;
-    border-bottom-width: 0.0125rem;
-    border-color: rgba(0, 0, 0, 0.60);;
-    background: #fff;
-    padding-left: 0;
-    padding-right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.84rem;
+  width: 360px;
+  height: 4.31rem;
+  padding-top: 1.37rem;
+  padding-bottom: 1.81rem;
+  border-left: none;
+  border-right: none;
+  border-top-width: 0.0125rem;
+  border-bottom-width: 0.0125rem;
+  border-color: rgba(0, 0, 0, 0.6);
+  background: #fff;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .Tag_text {
-    margin-left: 2.25rem;
-    opacity: 0.9;
-    display: flex;
-    flex-direction: row;
-    color: #000;
-    font-family: Inter;
-    font-size: 0.9375rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+  margin-left: 2.25rem;
+  opacity: 0.9;
+  display: flex;
+  flex-direction: row;
+  color: #000;
+  font-family: Inter;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 .tagged_company {
-    margin-left: 0.63rem;
-    font-weight: 400;
+  margin-left: 0.63rem;
+  font-weight: 400;
 }
 
 .arrow {
-    margin-right: 1.25rem;
+  margin-right: 1.25rem;
 }
 
 .modal_overlay {
-    position: fixed;
-    z-index: 2;
-    left: 0;
-    top: 0;
-    width: 150%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.32);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 150%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.32);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .modal_content {
-    width: 280px;
-    min-height: 600px;
-    height: fit-content;
-    flex-shrink: 0;
-    padding: 1rem;
-    margin: 0;
-    border: 1px solid #777;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-  }
+.modal_content {
+  width: 280px;
+  min-height: 600px;
+  height: fit-content;
+  flex-shrink: 0;
+  padding: 1rem;
+  margin: 0;
+  border: 1px solid #777;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
 
-  .modal_header {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1.69rem;
-    margin-left: 1.56rem;
-    margin-right: 0.23rem;
-  }
+.modal_header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.69rem;
+  margin-left: 1.56rem;
+  margin-right: 0.23rem;
+}
 
-  .close_btn {
-    width: 1.875rem;
-    height: 1.875rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-  }
+.close_btn {
+  width: 1.875rem;
+  height: 1.875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
 
-  .Done {
-    width: 3.25rem;
-    height: 1.375rem;
-  }
+.Done {
+  width: 3.25rem;
+  height: 1.375rem;
+}
 
-  .modal_container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-  }
+.modal_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
 
-  .tagCompany_text {
-    color: #000;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: Inter;
-    font-size: 0.9375rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    opacity: 0.9;
-    margin: 0;
-  }
+.tagCompany_text {
+  color: #000;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Inter;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  opacity: 0.9;
+  margin: 0;
+}
 
- .search_box {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 2.38rem;
-    width: 13.125rem;
-    height: 2.375rem;
-    border-radius: 0.3125rem;
-    background: rgba(217, 217, 217, 0.50);
- }
+.search_box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2.38rem;
+  width: 13.125rem;
+  height: 2.375rem;
+  border-radius: 0.3125rem;
+  background: rgba(217, 217, 217, 0.5);
+}
 
- .search_img {
-    width: 1.1875rem;
-    height: 1.25rem;
-    flex-shrink: 0;
-    margin-right: 1.69rem;
-    margin-left: 0.38rem;
- }
+.search_img {
+  width: 1.1875rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  margin-right: 1.69rem;
+  margin-left: 0.38rem;
+}
 
- .box {
-    color: #000;
-    font-family: Inter;
-    font-size: 0.9375rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width:65%;
-    background: rgba(217, 217, 217, 0);
-    border: none;
- }
+.box {
+  color: #000;
+  font-family: Inter;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 65%;
+  background: rgba(217, 217, 217, 0);
+  border: none;
+}
 
- /* 모달창 기업 목록 부분 */
- .company_list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
- }
+/* 모달창 기업 목록 부분 */
+.company_list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
- .company_item {
-    width: 70%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
- }
+.company_item {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
 
- .company {
-    display: flex;
-    flex-direction: row;
- }
+.company {
+  display: flex;
+  flex-direction: row;
+}
 
- .company_name {
-    margin-left: 0.63rem;
- }
+.company_name {
+  margin-left: 0.63rem;
+}
 
- .company_image {
-    width: 50px;
-    height: 50px;
-    border-radius: 70%;
- }
+.company_image {
+  width: 50px;
+  height: 50px;
+  border-radius: 70%;
+}
+
+.sliderImg {
+  height: 100%;
+}

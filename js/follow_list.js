@@ -91,9 +91,10 @@ $(function () {
   initUserHandle();
   getDataforPageInit("follower");
   getDataforPageInit("following");
-  if (getURLParam("isFollowing")) {
+  if (getURLParam("isFollowing")=='true') {
     slideFollowing();
   }
+
 });
 
 // init user handle

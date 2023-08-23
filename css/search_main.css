@@ -1,3 +1,7 @@
+main {
+    overflow-x: hidden;
+}
+
 /* 하단바 css */
 .base_bottom_searchNav_item {
     background-color: white;
@@ -98,7 +102,8 @@ header img {
 /* 탐색 이미지 grid */
 .grid_container_forYou,
 .grid_container_person,
-.grid_container_company {
+.grid_container_company,
+.grid_container_hashtag {  
     display: grid;
     grid-template-columns: repeat(3, 32%);
     gap: 0.2rem; 
@@ -106,12 +111,15 @@ header img {
     padding-bottom: 39px;
     overflow: hidden;
     overflow-y: hidden;
+    box-sizing: border-box;
   }
   
 .grid_container_forYou img,
 .grid_container_person img,
-.grid_container_company img {
+.grid_container_company img,
+.grid_container_hashtag img {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    height: 6rem;
   }

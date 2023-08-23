@@ -11,8 +11,8 @@
 
 <body>
   <header>
-    <a href="#">
-        <img src="../image/logo.png" alt="logo">
+    <a href="../html/corporation_feed.html">
+      <img src="../image/logo.png" alt="logo">
     </a>
   </header>
 
@@ -20,13 +20,11 @@
     <div class="feed_header">
       <div class="feed_header_bar">
         <a href="javascript:history.back();">
-            <img src="../image/goback.png" alt="goBack"
-                width="30rem" height="30rem" style="padding-top: 0.2rem;"
-            >
+          <img src="../image/goback.png" alt="goBack" width="30rem" height="30rem" style="padding-top: 0.2rem;">
         </a>
-        <a href="#">
-            <img src="../image/notification.png" alt="notification"
-                width="40rem" height="30rem" style="padding-top: 0.2rem;">
+        <a href="../html/notification.html">
+          <img src="../image/notification.png" alt="notification" width="40rem" height="30rem"
+            style="padding-top: 0.2rem;">
         </a>
       </div>
 
@@ -38,22 +36,27 @@
     <!-- 모달창 -->
     <div class="modal">
       <div class="modal_content">
-        <div class="modal_header">
-          <h2>댓글</h2>
-          <span class="close_modal">&times;</span>
+        <div class="modal_header_container">
+          <div class="modal_header">
+            <h2>댓글</h2>
+            <span class="close_modal">&times;</span>
+          </div>
         </div>
-        <hr>
         <div class="modal_body">
-          <div class="userFeed_container"></div>
-          
+          <div class="feeds_container"></div>
+
           <hr>
 
           <!-- 댓글 목록을 표시할 컨테이너 -->
           <div class="comments_container"></div>
         </div>
+
+        <!-- 댓글 작성 컨테이너 -->
+        <div class="postComment">
+
+        </div>
       </div>
     </div>
-    
 
   </main>
 
@@ -75,5 +78,6 @@
 <script src="../js/base.js"></script>
 <!-- <script src="../js/personal_feed.js"></script> -->
 <script src="../js/personalFeed_data.js"></script>
+<script src="../js/corporationFeed_function.js"></script>
 
 </html>

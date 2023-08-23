@@ -79,7 +79,6 @@ function handleUpdate(fileList) {
     /*imageList.push(...fileList);*/
     imageLengthCount += fileList.length;
     imgFirstInput++;
-    console.log(imageLengthCount);
     /* 검사!!!
       console.log(imageList);
       console.log(imageLengthCount);
@@ -94,7 +93,6 @@ function handleUpdate(fileList) {
         src: event.target?.result, // src는 base-64형태
       });
       imageList.push(reader.result);
-      /*console.log(imageList[0]);*/
       const imgContainer = el("div", { className: "container-img" }, img);
       preview.append(imgContainer);
     });
@@ -103,7 +101,7 @@ function handleUpdate(fileList) {
   });
 }
 
-/***********************테스트 중!!!**************8 */
+
 function handleUpdatePre(fileLast) {
   const preview_image = document.getElementById("preview_image"); // 새로 만든 부분
 
@@ -348,12 +346,13 @@ $.ajax({
             <img class="company_image" src="${data[i].thumbnail}">
             <p class="company_name">${data[i].handle}</p>
         </div>
-        <input type="radio" name="tagged" value="${data[i].handle}">
+        <input type="radio" id="tagged" name="tagged" value="${data[i].handle}">
       </div>
       `;
     }
 
     $(".company_list").append(company_template);
+    console.log($("#tagged").val());
 
     $(".Done").click(function () {
       var radioVal = $('input[name="tagged"]:checked').val();
@@ -388,46 +387,23 @@ function giveText() {
   return document.getElementById("text").value;
 }
 
-var formData = new FormData();
 
 $("#Share").click(function () {
   /*
     폼 데이터에 올릴 사진 배열을 전부 append하기
   */
-  const formDom = document.getElementById("new-post-form");
-
-  for (let i = 0; i < imageLengthCount; i++) {
-    formDom.append(imageList[i]);
+  var formData = new FormData();
+  //const formHtml = document.getElementById("new-post-form");
+  //const putImagesToForm = imageList;
+  const TextToFrom = $("#text").val();
+  for(let i = 0; i < imageLengthCount; i++) {
+    formData.append("images", $('#input')[0].files[i]);
   }
-
-  /* 여기서 부터  */
-  /*
-  var tagged_user_template = ``;
-  var Tag = document.querySelector(".tagged_company");
-  var valueofTag = Tag.innerText;
-
-  tagged_user_template += `
-
-  <input type="hiddin" name="tagged_user" value="${valueofTag}">
-  `;
-
-  console.log(valueofTag);
-  formDom.append(tagged_user_template);
-  */
-  /* 여기까지가 작성했는데 안된 곳...*/
-
-  ///////////////////////////////////// 이거 하고 있었다
-  var inputTaggedUser = document.createElement('input');
-  inputTaggedUser.setAttribute('type', 'hidden');
-  inputTaggedUser.setAttribute('name', 'tagged_user');
-  if (getCurrentAccountTypeFromSessionStorage() == 1) {
-    inputTaggedUser.setAttribute('value', $(".tagged_company").val());
-  }
-  formDom.appendChild(inputTaggedUser);
+  const TaggedCompanyToForm = $("#tagged").val();
   
 
-  formData = new FormData(formDom);
-
+  formData.append("content", TextToFrom);
+  formData.append("tagged_user", TaggedCompanyToForm);
   $.ajax({
     url: "http://43.202.152.189/feed",
     type: "POST",

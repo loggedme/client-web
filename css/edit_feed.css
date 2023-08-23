@@ -25,7 +25,7 @@ body {
 }
 
 .head {
-    padding-top: 5.75rem;
+    padding-top: 3.75rem;
     margin-bottom: 1.5rem;
     margin-left: 0.88rem;
     margin-right: 0.88rem;
@@ -58,39 +58,34 @@ body {
 /* 이미지 보이는 부분 */
 .slider__img {
     position: relative;
-    width: 364px;
-    height: 374px;
+    width: 330px;
+    height: 300px;
     overflow: hidden;
 }
 
 .page__img {
     position: relative;
-    width: 430px;
+    width: 330px;
     height: 863.33px;
     overflow: hidden; 
 }
 
 /************ page 2개 대해서 overflow 히든을 이용해서 page width 2개 분량*/
-.page__inner {
-    display: flex;
-    flex-wrap: wrap;
-    width: 860px;
-    height: 863.33px;
-}
+
 
 /* 이미지 감싸고 있는 부모 : 움직이는 부분 */
 .slider__inner {
     display: flex;
     flex-wrap: wrap;
     /* 총 이미지 6개 */
-    width: 2184px;
-    height: 374px;
+    width: 3300px;
+    height: 300px;
 }
 /* 개별적인 이미지 */
 .slider {
     position: relative;
-    width: 364px;
-    height: 374px;
+    width: 330px;
+    height: 300px;
 }
 .slider img{
     width: 100%;
@@ -118,7 +113,7 @@ body {
     color:#000;
 }
 .slider__btn img.prev {
-    left: 33px;
+    left: 20px;
     opacity: 0.3;
 }
 .slider__btn img.next {
@@ -129,7 +124,7 @@ body {
 /* 점 부분 */
 .slider__dot {
     position: absolute;
-    padding-top: 396px;
+    padding-top: 350px;
 }
 .slider__dot .dot {
     width: 10px;
@@ -189,8 +184,8 @@ hr {
     margin-left: 2.81rem;
     margin-top: 1.37rem;
     border: none;
-    width: 21.28rem;
-    height: 10rem;
+    width: 270px;
+    height: 9rem;
 }
 
 /* 
@@ -201,8 +196,8 @@ hr {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1.84rem;
-    width: 26.87506rem;
+    margin-top: 2.5rem;
+    width: 360px;
     height: 4.31rem;
     padding-top: 1.37rem;
     padding-bottom: 1.81rem;
@@ -255,8 +250,8 @@ hr {
   }
 
   .modal_content {
-    width: 20.9375rem;
-    min-height: 41.6875rem;
+    width: 280px;
+    min-height: 600px;
     height: fit-content;
     flex-shrink: 0;
     padding: 1rem;
@@ -354,6 +349,7 @@ hr {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 10px 0;
  }
 
  .company {
@@ -363,4 +359,10 @@ hr {
 
  .company_name {
     margin-left: 0.63rem;
+ }
+
+ .company_image {
+    width: 50px;
+    height: 50px;
+    border-radius: 70%;
  }

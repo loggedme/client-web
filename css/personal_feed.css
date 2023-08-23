@@ -93,6 +93,11 @@ a:active {
 }
 
 /* 옵션 토글버튼 */
+.optionBtn {
+    background-color: transparent;
+    border: none;
+}
+
 .optionBtn:active {
     opacity: 0.5;
 }
@@ -105,6 +110,7 @@ a:active {
 
 .option_content {
     background-color: white;
+    border: solid 1px #ccc;
     width: 50%;
     height: 7rem;
     border-radius: 15px;
@@ -268,19 +274,21 @@ a:active {
 .feed_hashtag {
     margin-left: 0.5rem;
     cursor: pointer;    
-    color: #3E93E1;
+    color: #6970F2;
 }
 
 .feed_hashtag:visited,
 .feed_hashtag:link,
 .feed_hashtag:active {
-    color: #3E93E1;
+    color: #6970F2;
 }
 
 .feed_script {
     order: 2;
     font-size: medium;
     margin-bottom: 0.4rem;
+    width: 100%;
+    word-break: break-all;
 }
 
 /* 댓글 css */
@@ -354,10 +362,8 @@ a:active {
 
 .modal_header_container {
     width: 72%;
-    height: 11%;
+    height: fit-content;
     background-color: white;
-    display: flex;
-    flex-direction: column;
     position: fixed;
     
 }
@@ -373,16 +379,19 @@ a:active {
     cursor: pointer;
     width: 50px;
     font-size: 40px;
+    padding-top: 2%;
   }
   
   .modal_body {
+    width: 100%;
     margin-top: 20px;
-    padding: 28% 0;
+    padding: 21.5% 0;
   }
   
 .comments_item {
     display: flex;
     margin-bottom: 1rem;
+    justify-content: space-between;
 }
 
 .comments_item a>img {
@@ -390,6 +399,10 @@ a:active {
     height: 2.5rem;
     border-radius: 50%;
     margin-right: 1rem;
+}
+
+.comments_user_info {
+    display: flex;
 }
 
 .comments_info {
@@ -420,6 +433,10 @@ a:active {
     flex-direction: column;
 }
 
+.hashtag {
+    color: #3E93E1;
+}
+
 /* 댓글 작성 css */
 .postComment {
     width: 80%;
@@ -434,16 +451,14 @@ a:active {
 }
 
 .postingUser_img {
-    left: 0;
-    width: fit-content;
+    width: 3.2rem;
+    height: 3.2rem;
 }
 
 .postingUser_img img {
-    margin: 0 0.7rem;
-    width: 3.2rem;
-    height: 3.2rem;
-    border-radius: 50%;
     
+    height: auto;
+    border-radius: 50%;
 }
 
 .commentInput input {
@@ -467,16 +482,51 @@ a:active {
     font-weight: bold;
 }
 
+/* 댓글 삭제 버튼  css*/
+/* 삭제버튼 보일지말지 여부 csss */
+.visible {
+    display: block;
+}
+.hidden {
+    display: none;
+}
+
+.deleteCommentBtn button{
+    width: 50px;
+    height: 35px;
+    border: none;
+    background-color: transparent;
+    color: #6970F2;
+    font-size:small;
+    font-weight: bold;
+    padding-top: 10%;
+}
+
+/* 댓글이 없을 경우 메시지 */
 #empty1 {
     font-size: large;
     font-weight: bold;
-    margin-left: 3.5rem;
+    margin-left: 4.5rem;
     margin-top: 1.5rem;
 }
 
 #empty2 {
     font-size: small;
     color: #888;
-    margin-left: 5rem;
+    margin-left: 6rem;
     margin-top: 0.5rem;
+}
+
+img:not([src]) {
+    content: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232");
+  }
+
+img[src=""] {
+content: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232");
+}
+
+.postingUser_img img[src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232"] {
+    width: 35px; 
+    height: 35px; 
+    margin-top: 5px;
 }
