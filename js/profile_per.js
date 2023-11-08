@@ -29,7 +29,7 @@ var isFollow = false;
 /* ajax 부분 */
 // ajax url에 user.id에 들어갈 값을 받아오는 부분
 
-// http://127.0.0.1:5500/html/profile_per.html?userId=1&&userAccountType=personal
+// http://127.0.0.1:5500/profile_per.html?userId=1&&userAccountType=personal
 // -> 뒤에서 2가지 key=value 오고 그걸 get으로 받아오기
 let params = new URLSearchParams(window.location.search); // 현재 페이지의 실제 주소(프론트에서의)
 let userId = params.get("userId");

@@ -266,7 +266,7 @@ $(document).ready(function (jwtToken) {
         commentLink.append(commentImg);
 
         // 공유 버튼
-        var CopyUrl = `http://13.125.224.114/html/single_feed.html?feedId=${currentFeedId}`;
+        var CopyUrl = `http://13.125.224.114/single_feed.html?feedId=${currentFeedId}`;
         var shareLink = $("<button type=button>")
           .addClass("share_link")
           .on("click", function () {
@@ -364,13 +364,13 @@ $(document).ready(function (jwtToken) {
 
         // 분할된 문자열과 해시태그를 순서대로 삽입
         for (var i = 0; i < splitContent.length; i++) {
-            feedScript.append(splitContent[i]);
-            if (hashtags && i < hashtags.length) { // hashtags 배열이 null이 아닌 경우에만 처리
-                var hashtag = $("<span>").addClass("hashtag").text(hashtags[i]);
-                feedScript.append(hashtag);
-            }
+          feedScript.append(splitContent[i]);
+          if (hashtags && i < hashtags.length) {
+            // hashtags 배열이 null이 아닌 경우에만 처리
+            var hashtag = $("<span>").addClass("hashtag").text(hashtags[i]);
+            feedScript.append(hashtag);
+          }
         }
-
 
         // 업로드 날짜 (현재로부터 얼마 전인지)
         var uploaded_date = $("<div>").addClass("uploaded_date");

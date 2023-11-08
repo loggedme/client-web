@@ -20,7 +20,7 @@ function getCurrentUserThumbnailFromSessionStorage() {
 }
 
 // 쿼리 파라미터 가져오기
-// http://127.0.0.1:5500/html/single_feed.html?feedId=1
+// http://127.0.0.1:5500/single_feed.html?feedId=1
 let params = new URLSearchParams(window.location.search);
 let feedId = params.get("feedId");
 
