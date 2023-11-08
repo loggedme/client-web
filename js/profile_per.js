@@ -106,11 +106,11 @@ $.ajax({
     */
     isFollow = data.user.is_following;
     if (isFollow) {
-      $(".follow_btn").css("background-color", "#6970f2");
-      $(".follow_btn").css("color", "white");
-    } else {
       $(".follow_btn").css("background-color", "rgba(217, 217, 217, 0.5)");
       $(".follow_btn").css("color", "black");
+    } else {
+      $(".follow_btn").css("background-color", "#6970f2");
+      $(".follow_btn").css("color", "white");
     }
     $.each(data.badge.items, function (index, item) {
       // 각각의 뱃지 아이템을 배열에 하나씩 푸쉬
