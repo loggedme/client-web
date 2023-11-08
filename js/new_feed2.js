@@ -395,6 +395,7 @@ $("#Share").click(function () {
   //const formHtml = document.getElementById("new-post-form");
   //const putImagesToForm = imageList;
   const TextToFrom = $("#text").val();
+  console.log(TextToFrom);
   for (let i = 0; i < imageLengthCount; i++) {
     formData.append("images", $("#input")[0].files[i]);
   }
