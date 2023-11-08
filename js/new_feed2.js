@@ -8,6 +8,7 @@ $(document).ready(function () {
     "src",
     "../image/bottom_nav_plus_black.png"
   );
+  getProfileImageFromSessionStorage();
 });
 
 // close버튼 클릭 시 뒤로가기
@@ -100,7 +101,6 @@ function handleUpdate(fileList) {
     reader.readAsDataURL(file);
   });
 }
-
 
 function handleUpdatePre(fileLast) {
   const preview_image = document.getElementById("preview_image"); // 새로 만든 부분
@@ -323,7 +323,7 @@ $("#open_modal").click(function (e) {
 // 로그인 token(jstToken)을 get해와서 success되면 지금 위의
 // 함수들 실행하게 만들자.(corporationFeed_Mockup.js 참고)
 
-getProfileImageFromSessionStorage();
+// getProfileImageFromSessionStorage();
 var jwtToken = getTokenFromSessionStorage();
 // 모달 get 부분
 $.ajax({
@@ -387,7 +387,6 @@ function giveText() {
   return document.getElementById("text").value;
 }
 
-
 $("#Share").click(function () {
   /*
     폼 데이터에 올릴 사진 배열을 전부 append하기
@@ -396,11 +395,10 @@ $("#Share").click(function () {
   //const formHtml = document.getElementById("new-post-form");
   //const putImagesToForm = imageList;
   const TextToFrom = $("#text").val();
-  for(let i = 0; i < imageLengthCount; i++) {
-    formData.append("images", $('#input')[0].files[i]);
+  for (let i = 0; i < imageLengthCount; i++) {
+    formData.append("images", $("#input")[0].files[i]);
   }
   const TaggedCompanyToForm = $("#tagged").val();
-
 
   formData.append("content", TextToFrom);
   formData.append("tagged_user", TaggedCompanyToForm);
@@ -460,8 +458,11 @@ function getCurrentAccountTypeFromSessionStorage() {
 // 프사 가져오는 함수
 function getProfileImageFromSessionStorage() {
   // 사용자 프사 세션에서 받아오는 코드
-  if(sessionStorage.getItem("thumbnail") == null) {
-    return $("#profile").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232");
+  if (sessionStorage.getItem("thumbnail") == null) {
+    return $("#profile").attr(
+      "src",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232"
+    );
   }
   return $("#profile").attr("src", sessionStorage.getItem("thumbnail"));
 }
