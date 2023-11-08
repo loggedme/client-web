@@ -54,9 +54,12 @@ $.ajax({
     `;
 
     $("#profile").append(profile_template);
-    if(sessionStorage.getItem("thumbnail") == null) {
-      $("#profile_image").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232");
-    }else {
+    if (sessionStorage.getItem("thumbnail") == "null") {
+      $("#profile_image").attr(
+        "src",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232"
+      );
+    } else {
       $("#profile_image").attr("src", sessionStorage.getItem("thumbnail"));
     }
     // 이미지 배열 변수에 따로 저장
@@ -264,7 +267,6 @@ $("#Done").click(function () {
   const TextToFrom = $("#text").val();
   const TaggedCompanyToForm = $("#tagged").val();
 
-
   formData.append("content", TextToFrom);
   formData.append("tagged_user", TaggedCompanyToForm);
 
@@ -290,7 +292,7 @@ $("#Done").click(function () {
       } else if (jqXHR.status === 401) {
         console.error("Unauthorized:", jqXHR.responseText);
         alert("로그인 되지 않은 사용자.");
-      } else if(jqXHR.status === 403) {
+      } else if (jqXHR.status === 403) {
         console.error("Forbidden:", jqXHR.responseText);
         alert("로그인은 되어 있으나, 자신이 작성한 피드가 아닐때");
       } else if (jqXHR.status === 404) {
