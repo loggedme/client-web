@@ -385,6 +385,8 @@ $(document).ready(function (jwtToken) {
       // 분할된 문자열과 해시태그를 순서대로 삽입
       for (var i = 0; i < splitContent.length; i++) {
         console.log(i);
+        console.log(splitContent[i]);
+        console.log(hashtag);
         feedScript.append(splitContent[i]);
         if (hashtags && i < hashtags.length) {
           // hashtags 배열이 null이 아닌 경우에만 처리
