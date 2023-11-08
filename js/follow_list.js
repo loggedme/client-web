@@ -91,10 +91,9 @@ $(function () {
   initUserHandle();
   getDataforPageInit("follower");
   getDataforPageInit("following");
-  if (getURLParam("isFollowing")=='true') {
+  if (getURLParam("isFollowing") == "true") {
     slideFollowing();
   }
-
 });
 
 // init user handle
@@ -115,15 +114,15 @@ $(document).on("click", ".item_following_btn", function (e) {
   if ($(this).text() == "follow") {
     followHandler($(this).attr("id").slice(3));
     $(this).css({
-      "background-color": "#6970f2",
-      color: "white",
+      "background-color": "rgba(217, 217, 217, 0.5)",
+      color: "#000",
     });
     $(this).text("Following");
   } else {
     unfollowHandler($(this).attr("id").slice(3));
     $(this).css({
-      "background-color": "rgba(217, 217, 217, 0.5)",
-      color: "#000",
+      "background-color": "#6970f2",
+      color: "white",
     });
     $(this).text("follow");
   }
