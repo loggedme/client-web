@@ -458,7 +458,7 @@ function getCurrentAccountTypeFromSessionStorage() {
 // 프사 가져오는 함수
 function getProfileImageFromSessionStorage() {
   // 사용자 프사 세션에서 받아오는 코드
-  if (sessionStorage.getItem("thumbnail") == null) {
+  if (sessionStorage.getItem("thumbnail") == "null") {
     return $("#profile").attr(
       "src",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232"
