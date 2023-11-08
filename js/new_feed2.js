@@ -457,6 +457,7 @@ function getCurrentAccountTypeFromSessionStorage() {
 
 // 프사 가져오는 함수
 function getProfileImageFromSessionStorage() {
+  console.log(sessionStorage.getItem("thumbnail"));
   // 사용자 프사 세션에서 받아오는 코드
   if (sessionStorage.getItem("thumbnail") == "null") {
     return $("#profile").attr(
